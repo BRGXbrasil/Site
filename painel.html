@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Painel · Brgx</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+:root{
+  --bg:#f4efe7; --bg-1:#ebe5d8; --ink:#17130e; --muted:#7e7060;
+  --line:rgba(23,19,14,.10); --accent:#8c6b2a; --accent-l:#a07c35;
+  --good:#3b6d11; --serif:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;min-height:100vh}
+.top{position:sticky;top:0;padding:54px 22px 4px;background:rgba(244,239,231,.9);backdrop-filter:blur(16px)}
+.kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;font-family:ui-monospace,monospace}
+.title{font-family:var(--serif);font-size:26px;margin-top:6px}
+.wrap{max-width:640px;margin:0 auto;padding:0 22px 60px}
+.ring-wrap{display:flex;align-items:center;gap:20px;padding:24px 0;flex-wrap:wrap}
+.ring{position:relative;width:130px;height:130px;flex:0 0 auto}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring-track{fill:none;stroke:rgba(23,19,14,.07);stroke-width:10}
+.ring-fill{fill:none;stroke-width:10;stroke-linecap:round;stroke:var(--accent)}
+.ring-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ring-label strong{font-family:var(--serif);font-size:26px;font-weight:400}
+.ring-label span{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:2px}
+.ring-copy strong{font-family:var(--serif);font-size:18px;font-weight:400;display:block;margin-bottom:4px}
+.ring-copy span{font-size:13px;color:var(--muted)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:12px}
+.card-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-family:ui-monospace,monospace}
+.card-title{font-family:var(--serif);font-size:17px;margin-bottom:6px}
+.card-desc{font-size:13px;color:var(--muted);line-height:1.55}
+.empty{padding:40px 20px;text-align:center;color:var(--muted);font-size:13px}
+.back{display:inline-block;margin:0 22px 8px;font-size:12.5px;font-weight:600;color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="top">
+  <a href="./index.html" class="back">← Brgx</a>
+  <div class="kicker">Visão geral</div>
+  <div class="title">Painel do dia</div>
+</div>
+<div class="wrap">
+  <div class="ring-wrap">
+    <div class="ring">
+      <svg viewBox="0 0 120 120">
+        <circle class="ring-track" cx="60" cy="60" r="52"/>
+        <circle class="ring-fill" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+      </svg>
+      <div class="ring-label"><strong>—</strong><span>hoje</span></div>
+    </div>
+    <div class="ring-copy">
+      <strong>Sem execuções registradas</strong>
+      <span>Conecte a rotina do dia para acompanhar aqui.</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">Rotina do dia</div>
+    <div class="card-title">Nenhuma tarefa configurada</div>
+    <div class="card-desc">Este painel mostra o progresso do dia assim que a operação tiver um cronograma ativo, ativações e execuções registradas.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">Indicadores-chave</div>
+    <div class="card-title">Aguardando dados da operação</div>
+    <div class="card-desc">Taxa de retorno, ticket médio, ocupação e reativação aparecem aqui quando a operação estiver conectada aos módulos de execução.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">Atalhos</div>
+    <div class="card-desc" style="margin-top:6px">
+      <a href="./relacionamento.html" style="color:var(--accent);font-weight:600;text-decoration:none;display:block;margin-bottom:8px">→ Relacionamento</a>
+      <a href="./lista-da-vez.html" style="color:var(--accent);font-weight:600;text-decoration:none;display:block;margin-bottom:8px">→ Módulo de Distribuição</a>
+      <a href="./procedimentos.html" style="color:var(--accent);font-weight:600;text-decoration:none;display:block;margin-bottom:8px">→ Google dos Procedimentos</a>
+      <a href="./treinamentos.html" style="color:var(--accent);font-weight:600;text-decoration:none;display:block">→ Treinamentos</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
