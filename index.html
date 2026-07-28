@@ -1090,7 +1090,7 @@ function renderSpotlightComercial(){
 /* ============ APRENDER (Vídeos + Treinamentos) ============ */
 function renderAprender(){
   if(missaoAberta) return renderMissao();
-  const tabs=[["videos","Vídeos"],["trilha","Trilha"]];
+  const tabs=[["videos","Roteiros"],["trilha","Trilha"]];
   const body = subAprender==="trilha" ? renderTrilha() : renderVideos();
   return `
   <div class="subtabs">
@@ -1176,23 +1176,14 @@ function renderMissao(){
       <p class="muted" style="line-height:1.55;margin:0">${esc(m.resumo)}</p>
     </section>
 
-    <!-- vídeo de referência -->
+    <!-- material de apoio -->
     <section class="card section">
-      <h2>Referência em vídeo</h2>
-      ${m.video&&m.video.url
-        ? `<button class="vcard" style="border:none;width:100%;cursor:pointer" onclick="openVid('${m.video.url}','${esc(m.t)}')">
-            <div class="vk">${esc(m.video.modulo||'Treinamento')}</div>
-            <strong>${esc(m.video.titulo||m.t)}</strong>
-            <span>${esc(m.video.desc||'')}</span>
-            <div class="vmeta"><span class="mono" style="font-size:.8rem">${esc(m.video.dur||'')}</span>
-              <span class="vplay">▶</span></div>
-          </button>`
-        : `<div style="background:var(--bg-b);border-radius:14px;padding:28px 16px;text-align:center;border:0.5px solid var(--line)">
-            <div style="font-size:2rem;margin-bottom:8px">▶</div>
-            <div style="font-size:.9rem;color:var(--muted)">Vídeo em preparação</div>
-            <div style="font-size:.78rem;color:var(--muted);margin-top:4px;font-family:var(--mono)">Disponível em breve</div>
-          </div>`
-      }
+      <h2>Material de apoio</h2>
+      <div style="background:var(--bg-b);border-radius:14px;padding:18px;border:0.5px solid var(--line)">
+        <div class="mono" style="font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">${esc(m.video&&m.video.modulo||'Treinamento')}</div>
+        <div style="font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:6px">${esc(m.video&&m.video.titulo||m.t)}</div>
+        <div style="font-size:.88rem;color:var(--muted);line-height:1.55">${esc(m.video&&m.video.desc||'')}</div>
+      </div>
     </section>
 
     <!-- passo a passo -->
@@ -1695,12 +1686,12 @@ function renderVideos(){
   return `
   ${renderSpotlightComercial()}
   <section class="card section" style="margin-top:14px">
-    <h2>Vídeos de treinamento</h2>
-    <div class="muted" style="font-size:.86rem;line-height:1.5">Mini-aulas animadas baseadas nos POPs oficiais e no núcleo cultural. Toque para assistir — a cena pausa quando você tocar na tela.</div>
+    <h2>Roteiros animados</h2>
+    <div class="muted" style="font-size:.86rem;line-height:1.5">Apresentações animadas baseadas nos POPs oficiais e no núcleo cultural. Toque para abrir — a cena pausa quando você tocar na tela.</div>
   </section>
   <div class="vcards">
     ${resto.map(v=>`<button class="vcard" onclick="playVideo('${v.id}')">
-      <span class="vk">${DB.videosVistos[v.id]?"✓ Assistido":"Vídeo · "+videoDur(v)+"s"}</span>
+      <span class="vk">${DB.videosVistos[v.id]?"✓ Concluído":"Roteiro · "+videoDur(v)+"s"}</span>
       <strong>${esc(v.titulo)}</strong>
       <span>${esc(v.sub)}</span>
       <span class="vmeta"><span style="color:#9fb8b8;font-size:.75rem">${v.cenas.length} cenas</span><span class="vplay">▶</span></span>
