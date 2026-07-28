@@ -993,8 +993,8 @@ function normalizeVez(){
 
 /* ============ NAVEGAÇÃO ============ */
 const VIEWS=[
-  ["painel","📋 Painel"],["relacionamento","🤝 Relacionamento"],
-  ["procedimentos","🔍 Procedimentos"],["vez","📍 Distribuição"],["aprender","🎓 Treinamentos"]
+  ["painel","📋 Painel"],["procedimentos","🔍 Procedimentos"],
+  ["vez","📍 Distribuição"],["aprender","🎓 Treinamentos"]
 ];
 let missaoAberta=null;
 let quizEstado=null;
@@ -1043,7 +1043,7 @@ let buscaQuery="";
 let procSetor="Todos";
 let vezView="vez";
 
-function setView(v){if(v==='relacionamento'){window.location.href='./relacionamento.html';return;}DB.view=v;missaoAberta=null;quizEstado=null;save();render()}
+function setView(v){DB.view=v;missaoAberta=null;quizEstado=null;save();render()}
 
 /* ============ RENDER GERAL ============ */
 function render(){
@@ -1058,7 +1058,6 @@ function render(){
     DB.view==="procedimentos" ? renderProcedimentos() :
     DB.view==="painel" ? renderPainel() :
     DB.view==="vez" ? renderVez() :
-    DB.view==="relacionamento" ? "" :
     renderAprender();
   afterRender();
 }
