@@ -808,11 +808,11 @@ const TRILHA = [
      q:"Três clientes ligam no mesmo momento pedindo especificamente aquela profissional — que já está com a agenda cheia naquele dia. Nenhuma delas tem agendamento prévio: é a primeira vez que qualquer uma das três procura esse horário. Uma é cliente frequente da operação, as outras duas nunca vieram. Como conduzir?",
      opts:[
        "Priorizar a cliente frequente automaticamente e oferecer alternativa às novas — fidelidade sempre vem primeiro",
-       "Consultar a profissional sobre a real possibilidade de encaixe, sem indicar qual cliente prefere. Se houver encaixe, a escolha é dela. Se não houver, oferecer o mesmo próximo horário disponível para as três",
+       "Informar à profissional os três nomes, horários pretendidos e serviços desejados, sem sugerir qual cliente deveria ter prioridade. Se houver encaixe, a escolha de quem atender é dela. Se não houver, oferecer o mesmo próximo horário disponível para as três",
        "Encaminhar as três direto para o próximo horário disponível, sem nem perguntar à profissional se cabe um encaixe"
      ],
      correct:1,
-     exp:"Nenhuma das três tinha reserva antes desse momento — elas pediram simultaneamente, então não existe fila por ordem de chegada para desempatar. Decidir encaixe com base em frequência é a recepção aplicando uma régua de favoritismo que não é dela para aplicar. Quem tem a informação real sobre capacidade e sobre a relação com cada cliente é a profissional — o encaixe, se houver, é decisão dela. Sem encaixe possível, o próximo horário vale igual para as três. Preferência pela profissional as três têm; isso não cria hierarquia entre elas."
+     exp:"Nenhuma das três tinha reserva antes desse momento — elas pediram simultaneamente, então não existe fila por ordem de chegada para desempatar. A profissional precisa dos fatos completos: quem são, que horário buscam, qual serviço querem — isso é informação operacional, não favoritismo. O que a recepção não faz é sugerir quem merece prioridade; essa leitura sobre capacidade e relação com cada cliente pertence a quem realmente atende. Sem encaixe possível, o próximo horário vale igual para as três. Preferência pela profissional as três têm; isso não cria hierarquia entre elas."
    }},
 
   {id:"m6", t:"Telefone e WhatsApp", pop:"telefone",
