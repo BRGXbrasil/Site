@@ -322,9 +322,11 @@ const POPS = [
   {id:"agendamento", title:"Agendamento", group:"Agenda", setor:"Recepção", steps:[
     "Solicitar nome completo e telefone da cliente para localizar ou confirmar cadastro.",
     "Perguntar qual serviço deseja realizar e se possui profissional de preferência.",
-    "Conferir histórico da cliente: profissional recorrente, preferências e restrições.",
+    "Se não tiver preferência declarada, conferir o histórico da cliente antes de decidir qualquer coisa.",
+    "Havendo histórico, comunicar como convite, nunca como decisão fechada: 'Vi que você já foi atendida por [profissional]. Gostaria de agendar com ele mesmo, ou prefere experimentar com outro profissional disponível?'",
+    "Essa pergunta cumpre dois papéis ao mesmo tempo: relembra a cliente de um atendimento que pode ter sido bom e ela nem lembrava o nome, e abre espaço confortável para experimentar outro profissional, sem precisar justificar ou criticar o atendimento anterior.",
+    "Só quando não há preferência declarada nem histórico de atendimento anterior é que se usa a lista da vez, de forma discreta, justa e registrada.",
     "Validar disponibilidade do profissional escolhido e oferecer horários próximos quando necessário.",
-    "Se não houver preferência, utilizar a lista da vez de forma discreta, justa e registrada.",
     "Em caso de encaixe, validar com o profissional e garantir que não comprometa outra cliente.",
     "Confirmar data, horário, serviço, profissional e unidade antes de finalizar.",
     "Registrar origem da preferência quando cliente nova pedir profissional específico."]},
@@ -801,7 +803,7 @@ const TRILHA = [
 
   {id:"m5", t:"Agendamento", pop:"agendamento",
    video:{titulo:"Agendamento: decisões que parecem simples e não são", dur:"~12 min", desc:"Histórico, preferência, conflitos de agenda e lista da vez.", url:null},
-   resumo:"Histórico, preferência, disponibilidade, confirmação. Sem preferência → lista da vez.",
+   resumo:"Preferência primeiro. Sem preferência, histórico vira convite antes de qualquer decisão. Só sem os dois, lista da vez.",
    quiz:{
      q:"Três clientes ligam no mesmo momento pedindo especificamente aquela profissional — que já está com a agenda cheia naquele dia. Nenhuma delas tem agendamento prévio: é a primeira vez que qualquer uma das três procura esse horário. Uma é cliente frequente da operação, as outras duas nunca vieram. Como conduzir?",
      opts:[
