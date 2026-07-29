@@ -803,14 +803,14 @@ const TRILHA = [
    video:{titulo:"Agendamento: decisões que parecem simples e não são", dur:"~12 min", desc:"Histórico, preferência, conflitos de agenda e lista da vez.", url:null},
    resumo:"Histórico, preferência, disponibilidade, confirmação. Sem preferência → lista da vez.",
    quiz:{
-     q:"Três clientes ligam no mesmo horário pedindo especificamente aquela profissional — que já está com a agenda cheia naquele dia. Uma delas é cliente frequente, com anos de histórico na operação. As outras duas nunca vieram, mas pediram essa profissional por indicação. Como conduzir?",
+     q:"Três clientes ligam no mesmo momento pedindo especificamente aquela profissional — que já está com a agenda cheia naquele dia. Nenhuma delas tem agendamento prévio: é a primeira vez que qualquer uma das três procura esse horário. Uma é cliente frequente da operação, as outras duas nunca vieram. Como conduzir?",
      opts:[
-       "Priorizar a cliente frequente e oferecer horários alternativos às novas — fidelidade tem peso",
-       "Oferecer o próximo horário disponível com aquela profissional para as três, sem distinção de histórico",
-       "Para a frequente, verificar encaixe ou lista de espera prioritária. Para as novas, explicar a agenda cheia e oferecer o próximo horário real ou outro profissional de perfil semelhante"
+       "Priorizar a cliente frequente automaticamente e oferecer alternativa às novas — fidelidade sempre vem primeiro",
+       "Consultar a profissional sobre a real possibilidade de encaixe, sem indicar qual cliente prefere. Se houver encaixe, a escolha é dela. Se não houver, oferecer o mesmo próximo horário disponível para as três",
+       "Encaminhar as três direto para o próximo horário disponível, sem nem perguntar à profissional se cabe um encaixe"
      ],
-     correct:2,
-     exp:"As três pediram a mesma profissional — a preferência é real nas três, isso não está em disputa. A diferença é o histórico: quem já construiu relação com a operação pode ter um encaixe avaliado ou prioridade na lista de espera. Quem nunca veio recebe o próximo horário verdadeiro ou uma alternativa à altura, nunca uma promessa de vaga que não existe. Preferência e histórico são coisas diferentes — o POP considera as duas, mas não as trata como sinônimos."
+     correct:1,
+     exp:"Nenhuma das três tinha reserva antes desse momento — elas pediram simultaneamente, então não existe fila por ordem de chegada para desempatar. Decidir encaixe com base em frequência é a recepção aplicando uma régua de favoritismo que não é dela para aplicar. Quem tem a informação real sobre capacidade e sobre a relação com cada cliente é a profissional — o encaixe, se houver, é decisão dela. Sem encaixe possível, o próximo horário vale igual para as três. Preferência pela profissional as três têm; isso não cria hierarquia entre elas."
    }},
 
   {id:"m6", t:"Telefone e WhatsApp", pop:"telefone",
