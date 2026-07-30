@@ -24,8 +24,17 @@
     border: 1px solid rgba(255,255,255,0.6);
     box-shadow: 0 8px 32px rgba(60,45,20,0.08);
   }
+  .doc-nav { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; padding: 16px 24px; font-family: Arial, Helvetica, sans-serif; }
+  .doc-nav a { color: #8c6b2a; text-decoration: none; font-size: 13px; font-weight: 700; }
+  .doc-nav a:hover { color: #6f531f; }
+  @media print { .doc-nav { display: none; } }
 </style>
 </helmet>
+<div class="doc-nav">
+  <a href="index.html">← Voltar ao site</a>
+  <!-- TODO: confirmar URL de produção do app BRGX (não há domínio hardcoded no repo hoje) -->
+  <a href="https://app.brgxbrasil.com.br">Acessar a plataforma Brgx →</a>
+</div>
 <doc-page>
 <section class="page" style="position:relative;padding:0.45in 0.7in;display:flex;flex-direction:column;overflow:hidden;background:linear-gradient(160deg,#fdf9f0,#f6efdf 60%,#f2e9d8);color:#1c1712;">
 
