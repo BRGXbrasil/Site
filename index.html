@@ -1,278 +1,587 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diego Borges · Consultoria Estratégica Empresarial</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#f4efe7; --bg-1:#ebe5d8; --text:#17130e; --sub:#4a3f32; --muted:#7e7060;
-  --gold:#8c6b2a; --gold-l:#a07c35; --bs:rgba(23,19,14,.09); --w:680px;
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;text-wrap:pretty}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(244,239,231,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:.5px solid rgba(255,255,255,.5)}
-.nav-logo{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
-.nav-btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--bg);background:var(--text);padding:9px 20px;text-decoration:none;transition:background .18s}
-.nav-btn:hover{background:var(--gold)}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 40px 80px;max-width:var(--w);margin:0 auto}
-.ey{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:block}
-.hero-h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,7vw,62px);font-weight:400;line-height:1.1;margin-bottom:8px}
-.hero-h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,7vw,62px);font-weight:600;line-height:1.08;color:var(--gold);margin-bottom:40px}
-.hero-p{font-size:17px;color:var(--sub);line-height:1.8;max-width:480px;margin-bottom:48px}
-.btn-dark{display:inline-flex;align-items:center;gap:10px;background:var(--text);color:var(--bg);font-size:14px;font-weight:500;letter-spacing:.04em;padding:15px 30px;text-decoration:none;transition:background .18s}
-.btn-dark:hover{background:var(--gold)}
-.btn-ghost{display:inline-flex;align-items:center;gap:10px;border:.5px solid rgba(23,19,14,.25);color:var(--sub);font-size:14px;padding:15px 30px;text-decoration:none;transition:all .18s;margin-left:14px}
-.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
-.div{width:100%;height:.5px;background:var(--bs)}
-.sec{padding:88px 40px;max-width:var(--w);margin:0 auto}
-.sec-ey{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block}
-.sec-h{font-family:'Playfair Display',Georgia,serif;font-size:clamp(26px,4vw,36px);font-weight:400;line-height:1.25;margin-bottom:32px}
-.registro-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.registro-item{overflow:hidden}
-.registro-placeholder{width:100%;aspect-ratio:4/3;background:var(--bg-1);border:.5px solid var(--bs);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;text-align:center;padding:20px}
-.registro-caption{padding:16px 0 0}
-.reg-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px}
-.reg-desc{font-size:13px;color:var(--sub);line-height:1.7}
-.names-list{border-top:.5px solid var(--bs);margin-top:40px}
-.name-row{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:28px 0;border-bottom:.5px solid var(--bs);flex-wrap:wrap}
-.n-name{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:400;color:var(--text);display:block;margin-bottom:8px}
-.n-desc{font-size:14px;color:var(--sub);line-height:1.65;max-width:380px}
-.n-brand{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap;flex-shrink:0}
-.pq-wrap{padding:64px 40px;border-top:.5px solid var(--bs);border-bottom:.5px solid var(--bs);background:var(--bg-1)}
-.pq-inner{max-width:var(--w);margin:0 auto;display:flex;gap:32px;align-items:stretch}
-.pq-rule{width:2px;background:var(--gold);flex-shrink:0}
-.pq-text{font-family:'Playfair Display',Georgia,serif;font-size:clamp(19px,2.6vw,25px);font-style:italic;font-weight:400;line-height:1.55;color:var(--text)}
-.prod-model{padding:36px 0;border-bottom:.5px solid var(--bs)}
-.prod-model:last-child{border-bottom:none}
-.prod-toprow{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:16px}
-.prod-name{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-.prod-tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em}
-.prod-h3{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:400;margin-bottom:14px}
-.prod-body{font-size:16px;color:var(--sub);line-height:1.85}
-.prod-invest{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-style:italic;color:var(--text);margin:32px 0 24px}
-.bio-body{font-size:17px;color:var(--sub);line-height:1.9;margin-bottom:18px;max-width:560px}
-.bio-body:last-child{margin-bottom:0}
-.bio-body strong{color:var(--text);font-weight:500}
-.platform-box{border:.5px solid var(--bs);padding:0;background:var(--bg-1)}
-.platform-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;padding:24px 24px 0}
-.mod-item{padding:18px 24px;border-bottom:.5px solid var(--bs)}
-.mod-item:last-child{border-bottom:none}
-.mod-name{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px}
-.mod-desc{font-size:13px;color:var(--sub);line-height:1.65}
-.mod-new{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:.5px solid var(--gold);border-radius:3px;padding:1px 6px;margin-left:8px;vertical-align:middle}
-.cta-wrap{background:var(--text)}
-.cta-inner{max-width:var(--w);margin:0 auto;padding:88px 40px;text-align:center}
-.cta-ey{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(184,150,96,.7);display:block;margin-bottom:28px}
-.cta-h{font-family:'Playfair Display',Georgia,serif;font-size:clamp(24px,3.8vw,36px);font-weight:400;line-height:1.28;max-width:460px;margin:0 auto 18px;color:#f4efe7}
-.cta-p{font-size:15px;color:rgba(244,239,231,.55);max-width:360px;margin:0 auto 40px;line-height:1.8}
-.btn-wpp{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#f4efe7;font-size:14px;font-weight:500;letter-spacing:.04em;padding:15px 32px;text-decoration:none;transition:background .18s}
-.btn-wpp:hover{background:var(--gold-l)}
-.footer{max-width:var(--w);margin:0 auto;padding:32px 40px;display:flex;justify-content:space-between;align-items:center;border-top:.5px solid var(--bs);flex-wrap:wrap;gap:12px}
-.f-logo{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
-.f-info{font-size:12px;color:var(--muted)}
-@media(max-width:620px){
-  .nav{padding:14px 20px}.hero{padding:120px 24px 64px}.sec{padding:72px 24px}
-  .registro-grid{grid-template-columns:1fr}.name-row{flex-direction:column;gap:8px}
-  .pq-wrap{padding:48px 24px}.cta-inner{padding:72px 24px}.footer{padding:24px 20px}
-  .hero{text-align:center}.hero-p{margin-left:auto;margin-right:auto}
-}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRGX — Sentido Aplicado à Gestão</title>
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<style>
+  :root {
+    --brgx-teal: #003F46;
+    --brgx-teal-2: #075C63;
+    --brgx-gray: #6F7371;
+    --brgx-gray-dark: #343A3A;
+    --brgx-silver: #B8BCB8;
+    --brgx-gold: #A99563;
+    --brgx-gold-soft: #D6C8A2;
+    --brgx-paper: #F4F0E6;
+    --brgx-white: #FFFFFF;
+    --brgx-black: #111818;
+  }
 
-<nav class="nav">
-  <a href="#" class="nav-logo">Diego Borges</a>
-  <div style="display:flex;align-items:center;gap:20px">
-    <a href="proposta.html" style="font-family:'DM Mono',monospace;font-size:11px;color:var(--sub);letter-spacing:.08em;text-transform:uppercase;text-decoration:none">Proposta</a>
-    <a href="https://wa.me/5511990130811?text=Ol%C3%A1%2C+vi+o+seu+site+e+tenho+interesse+na+consultoria.+Podemos+conversar%3F" target="_blank" class="nav-btn">WhatsApp &rarr;</a>
-  </div>
-</nav>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: Inter, Arial, Helvetica, sans-serif; background: var(--brgx-paper); color: var(--brgx-black); }
+  a { text-decoration: none; color: inherit; }
 
-<section class="hero">
-  <span class="ey">São Paulo &middot; Rio de Janeiro</span>
-  <h1 class="hero-h1">Seu salão tem o talento.</h1>
-  <div class="hero-h2">O que falta é direção.</div>
-  <p class="hero-p">Diego Borges. Gestor executivo há mais de quinze anos nas grandes empresas que o mercado de beleza de luxo em SP e RJ reconhece. O mesmo padrão de alto nível, agora para outras operações.</p>
-  <div>
-    <a href="https://wa.me/5511990130811?text=Ol%C3%A1%2C+vi+o+seu+site+e+tenho+interesse+na+consultoria.+Podemos+conversar%3F" target="_blank" class="btn-dark">Falar no WhatsApp &rarr;</a>
-    <a href="#produto" class="btn-ghost" onclick="document.getElementById('produto').scrollIntoView({behavior:'smooth'});return false;">Ver o produto</a>
-  </div>
-</section>
+  .site-shell {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at top left, rgba(0,63,70,0.10), transparent 34%),
+      linear-gradient(180deg, #F7F3EA 0%, #EFE9DB 100%);
+  }
 
-<div class="div"></div>
+  .nav {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-<section class="sec">
-  <span class="sec-ey">Registro real</span>
-  <div class="registro-grid">
-    <div class="registro-item">
-      <div class="registro-placeholder">Capa Viva S/A<br>(imagem a reenviar)</div>
-      <div class="registro-caption">
-        <span class="reg-tag">Viva S/A &middot; Edição 160 &middot; Maio 2014</span>
-        <p class="reg-desc">Studio W no Iguatemi Alphaville. Na capa de uma das principais revistas de negócios de São Paulo. 50 mil exemplares.</p>
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.03em;
+    color: var(--brgx-teal);
+  }
+
+  .nav-logo span { color: var(--brgx-gray); font-weight: 500; font-size: 12px; display: block; letter-spacing: 0.02em; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brgx-gray-dark);
+  }
+
+  .nav-links a:hover { color: var(--brgx-teal); }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brgx-teal);
+    color: #fff;
+    padding: 14px 26px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 14px 34px rgba(0,63,70,0.22);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brgx-teal);
+    padding: 13px 23px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px solid rgba(0,63,70,0.22);
+    background: rgba(255,255,255,0.4);
+  }
+
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    color: var(--brgx-gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 5.4vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--brgx-teal);
+    margin-bottom: 22px;
+    font-weight: 800;
+  }
+
+  .hero p {
+    font-size: 17.5px;
+    line-height: 1.65;
+    color: var(--brgx-gray-dark);
+    max-width: 560px;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .hero-visual {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(17,24,24,0.16);
+    border: 1px solid rgba(0,63,70,0.12);
+    min-height: 420px;
+  }
+
+  .hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: 16px;
+    border: 1px solid rgba(169,149,99,0.45);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .hero-visual img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+  .logo-strip {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 72px;
+  }
+
+  .logo-strip .label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--brgx-gold);
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .logo-box {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(0,63,70,0.10);
+    border-radius: 12px;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--brgx-teal-2);
+    font-size: 13px;
+    letter-spacing: -0.01em;
+  }
+
+  .section { max-width: 1180px; margin: 0 auto; padding: 88px 32px; }
+
+  .section-title { max-width: 760px; margin: 0 auto 48px; text-align: center; }
+
+  .section-title .eyebrow { text-align: center; }
+
+  .section-title h2 {
+    font-size: clamp(30px, 3.6vw, 46px);
+    color: var(--brgx-teal);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    font-weight: 800;
+  }
+
+  .section-title p { font-size: 16.5px; line-height: 1.65; color: var(--brgx-gray-dark); }
+
+  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+  .brgx-card {
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(0,63,70,0.12);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 12px 36px rgba(17,24,24,0.05);
+  }
+
+  .brgx-card .num {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--brgx-gold);
+    margin-bottom: 10px;
+  }
+
+  .brgx-card h3 { color: var(--brgx-teal); font-size: 18px; margin-bottom: 8px; font-weight: 700; }
+  .brgx-card p { color: var(--brgx-gray-dark); font-size: 14.5px; line-height: 1.6; }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .split img {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(0,63,70,0.12);
+    box-shadow: 0 20px 50px rgba(17,24,24,0.12);
+    display: block;
+  }
+
+  .gold-line { width: 72px; height: 2px; background: var(--brgx-gold); margin: 18px 0 22px; }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .pillar-item {
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(0,63,70,0.12);
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .pillar-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--brgx-gold); margin-top: 6px; flex-shrink: 0;
+  }
+
+  .pillar-item strong { display: block; color: var(--brgx-teal); font-size: 15px; margin-bottom: 3px; }
+  .pillar-item span { font-size: 13px; color: var(--brgx-gray-dark); line-height: 1.5; }
+
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+  .step-card {
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(0,63,70,0.12);
+    border-radius: 16px;
+    padding: 30px 26px;
+  }
+
+  .step-num {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--brgx-teal); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 15px; margin-bottom: 16px;
+  }
+
+  .step-card h3 { color: var(--brgx-teal); font-size: 16.5px; margin-bottom: 8px; font-weight: 700; }
+  .step-card p { color: var(--brgx-gray-dark); font-size: 13.5px; line-height: 1.6; }
+
+  .dark-panel {
+    background: linear-gradient(135deg, #003F46, #062D32);
+    color: #fff;
+    border-radius: 22px;
+    padding: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dark-panel::after {
+    content: "";
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 280px; height: 280px;
+    border: 28px solid rgba(255,255,255,0.04);
+    transform: rotate(45deg);
+  }
+
+  .dark-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; position: relative; z-index: 1; }
+
+  .dark-panel .eyebrow { color: var(--brgx-gold-soft); text-align: left; }
+  .dark-panel h2 { font-size: clamp(26px, 3vw, 36px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .dark-panel p { font-size: 14.5px; line-height: 1.65; color: #CFE0E1; margin-bottom: 20px; }
+
+  .dark-list { display: flex; flex-direction: column; gap: 10px; }
+  .dark-list div { display: flex; gap: 10px; font-size: 14px; }
+  .dark-list span { color: var(--brgx-gold-soft); font-weight: 800; }
+
+  .dark-link {
+    display: inline-block;
+    color: var(--brgx-gold-soft);
+    font-size: 13.5px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(214,200,162,0.5);
+  }
+
+  .authority {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .authority img {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(0,63,70,0.12);
+    box-shadow: 0 20px 50px rgba(17,24,24,0.12);
+  }
+
+  .authority h2 { font-size: clamp(26px, 3.2vw, 38px); color: var(--brgx-teal); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
+  .authority p { font-size: 15.5px; line-height: 1.65; color: var(--brgx-gray-dark); margin-bottom: 10px; }
+
+  .cta-section {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 72px 32px 100px;
+    text-align: center;
+  }
+
+  .cta-section h2 { font-size: clamp(30px, 4vw, 44px); color: var(--brgx-teal); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
+  .cta-section p { font-size: 16.5px; line-height: 1.6; color: var(--brgx-gray-dark); max-width: 540px; margin: 0 auto 32px; }
+
+  .cta-stats {
+    display: inline-flex;
+    align-items: center;
+    gap: 32px;
+    border-radius: 16px;
+    padding: 20px 34px;
+    margin-bottom: 30px;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(0,63,70,0.12);
+  }
+
+  .cta-stats .stat small { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brgx-gold); font-weight: 800; margin-bottom: 4px; }
+  .cta-stats .stat strong { font-size: 22px; color: var(--brgx-teal); font-weight: 800; }
+  .cta-stats .divider { width: 1px; height: 36px; background: rgba(0,63,70,0.15); }
+
+  footer {
+    border-top: 1px solid rgba(0,63,70,0.12);
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--brgx-gray);
+  }
+
+  footer .foot-logo { font-weight: 800; color: var(--brgx-teal); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 40px; }
+    .nav-links { display: none; }
+    .card-grid, .steps-grid, .logo-grid { grid-template-columns: 1fr; }
+    .split, .dark-grid, .authority { grid-template-columns: 1fr; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .dark-panel { padding: 34px 24px; }
+    footer { flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>
+</helmet>
+
+<div class="site-shell">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">
+      BRGX
+      <span>Sentido Aplicado à Gestão</span>
+    </div>
+    <div class="nav-links">
+      <a href="#solucoes">Soluções</a>
+      <a href="#plataforma">Plataforma</a>
+      <a href="#autoridade">Sobre</a>
+      <a href="proposta.html">Proposta</a>
+      <a href="https://wa.me/5511990130811" class="btn-primary">Fale com especialista</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <div class="eyebrow">BRGX · Sentido Aplicado à Gestão</div>
+      <h1>Gestão aplicada para operações de beleza que precisam crescer com método.</h1>
+      <p>
+        Consultoria estratégica e plataforma operacional para salões, spas e negócios de beleza de alto padrão.
+        Organizamos atendimento, equipe, processos, indicadores e recorrência em uma gestão clara, mensurável e executável.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5511990130811" class="btn-primary">Fale com especialista</a>
+        <a href="https://brgxbrasil.github.io/app/" class="btn-secondary">Conhecer a plataforma</a>
       </div>
     </div>
-    <div class="registro-item">
-      <div class="registro-placeholder">Vídeo inauguração<br>The Art Salon (a reenviar)</div>
-      <div class="registro-caption">
-        <span class="reg-tag">The Art Salon &middot; Inauguração &middot; 2020</span>
-        <p class="reg-desc">Rodrigo Cintra me apresentando na inauguração do The Art Salon. Abrir um espaço de luxo logo após a pandemia exige confiança, técnica e presença no trabalho.</p>
+    <div class="hero-visual">
+      <img src="assets/brgx-dashboard.png" alt="Plataforma BRGX">
+    </div>
+  </header>
+
+  <!-- LOGOS / OPERAÇÕES -->
+  <section class="logo-strip">
+    <div class="label">Operações onde o método já foi aplicado</div>
+    <div class="logo-grid">
+      <div class="logo-box">Studio W</div>
+      <div class="logo-box">The Art Salon</div>
+      <div class="logo-box">Spa D</div>
+      <div class="logo-box">Sala D'Oro</div>
+    </div>
+  </section>
+
+  <!-- SOLUÇÕES -->
+  <section class="section" id="solucoes">
+    <div class="section-title">
+      <div class="eyebrow">O que a BRGX resolve</div>
+      <h2>A operação cresce, mas continua dependendo de pessoas, memória e presença constante.</h2>
+      <p>A BRGX organiza o que hoje está solto: atendimento, rotina, equipe, indicadores, recorrência e execução.</p>
+    </div>
+    <div class="card-grid">
+      <div class="brgx-card">
+        <div class="num">01</div>
+        <h3>Faturamento que vira lucro</h3>
+        <p>Cada real da agenda mapeado, para você saber com número onde está a margem e onde está o próximo ganho.</p>
+      </div>
+      <div class="brgx-card">
+        <div class="num">02</div>
+        <h3>Atendimento que converte</h3>
+        <p>O primeiro contato deixa de ser só agendamento e passa a ativar cliente, no momento certo, com processo.</p>
+      </div>
+      <div class="brgx-card">
+        <div class="num">03</div>
+        <h3>Decisão com dado</h3>
+        <p>Comissão que alinha o time e rotina que roda sozinha. A operação sustentada por sistema, não por presença.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="div"></div>
-
-<section class="sec">
-  <span class="sec-ey">Histórico</span>
-  <h2 class="sec-h">Alguns dos nomes que já me confiaram esse trabalho.</h2>
-  <div class="names-list">
-    <div class="name-row">
+  <!-- CONSULTORIA + PLATAFORMA -->
+  <section class="section">
+    <div class="section-title">
+      <div class="eyebrow">Como funciona</div>
+      <h2>A consultoria define a direção. A plataforma sustenta a execução.</h2>
+    </div>
+    <div class="split">
+      <img src="assets/consultoria-reuniao.jpg" alt="Consultoria BRGX">
       <div>
-        <span class="n-name">Wanderley Nunes</span>
-        <p class="n-desc">Fui o gestor do Studio W no Iguatemi Alphaville. Formei líderes e gestores para outras unidades como a do Iguatemi JK e de Ribeirão Preto.</p>
+        <div class="eyebrow">Consultoria BRGX</div>
+        <h2 style="font-size:28px;color:var(--brgx-teal);font-weight:800;letter-spacing:-0.02em;">Diagnóstico, plano de ação e acompanhamento executivo</h2>
+        <div class="gold-line"></div>
+        <p style="color:var(--brgx-gray-dark);font-size:15.5px;line-height:1.65;">
+          Diagnóstico completo da operação, plano de ação estruturado, implantação supervisionada e entrega documentada.
+          Depois, acompanhamento contínuo com indicadores, sessões semanais e reuniões estratégicas mensais.
+        </p>
       </div>
-      <span class="n-brand">Studio W</span>
     </div>
-    <div class="name-row">
-      <div>
-        <span class="n-name">Rodrigo Cintra</span>
-        <p class="n-desc">Responsável executivo pela estruturação, implementação e operação do The Art Salon. Atendimento, processos e cultura construídos do zero. Hoje referência de alto padrão em São Paulo.</p>
-      </div>
-      <span class="n-brand">The Art Salon</span>
-    </div>
-    <div class="name-row">
-      <div>
-        <span class="n-name">Déia Dios</span>
-        <p class="n-desc">Gestão comercial e operacional das unidades do renomado spa da Faria Lima, em São Paulo, e da Barra da Tijuca, no Rio de Janeiro, com clientela AAA que inclui artistas da Rede Globo.</p>
-      </div>
-      <span class="n-brand">Spa D</span>
-    </div>
-  </div>
-</section>
+  </section>
 
-<div class="pq-wrap">
-  <div class="pq-inner">
-    <div class="pq-rule"></div>
-    <blockquote class="pq-text">"Dentro das operações que SP e RJ reconhecem como referência em beleza de luxo. Alta performance gerando resultado."</blockquote>
-  </div>
+  <!-- 7 PILARES -->
+  <section class="section">
+    <div class="section-title">
+      <div class="eyebrow">A estrutura</div>
+      <h2>Os 7 pilares da operação</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-item"><span class="pillar-dot"></span><div><strong>Diagnóstico</strong><span>Onde a operação está, com número.</span></div></div>
+      <div class="pillar-item"><span class="pillar-dot"></span><div><strong>Liderança</strong><span>O que só você resolve, e por quê.</span></div></div>
+      <div class="pillar-item"><span class="pillar-dot"></span><div><strong>Organização</strong><span>Papéis e processos que não dependem de memória.</span></div></div>
+      <div class="pillar-item"><span class="pillar-dot"></span><div><strong>Operação</strong><span>Rotinas e POPs que rodam sem você.</span></div></div>
+      <div class="pillar-item"><span class="pillar-dot"></span><div><strong>Atendimento</strong><span>A recepção deixa de perder cliente.</span></div></div>
+      <div class="pillar-item"><span class="pillar-dot"></span><div><strong>Performance</strong><span>Comissão que paga o comportamento certo.</span></div></div>
+      <div class="pillar-item" style="grid-column: span 2;"><span class="pillar-dot"></span><div><strong>Retenção</strong><span>O que faz o cliente voltar, e o que só ocupa horário na agenda.</span></div></div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section">
+    <div class="section-title">
+      <div class="eyebrow">O processo</div>
+      <h2>Do diagnóstico à operação que anda sozinha</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Diagnóstico</h3>
+        <p>Dez dias de imersão. Você recebe seu Índice Propositivo e uma decisão prioritária por pilar abaixo do ideal.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Implantação</h3>
+        <p>POPs, metas, plano de recorrência e ativações, implantados com acompanhamento, não deixados num PDF.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Acompanhamento</h3>
+        <p>Consultoria recorrente e o Índice acompanhado ao vivo na plataforma BRGX, mês a mês.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATAFORMA -->
+  <section class="section" id="plataforma">
+    <div class="dark-panel">
+      <div class="dark-grid">
+        <div>
+          <div class="eyebrow">Plataforma BRGX</div>
+          <h2>Onde o método vira rotina, não relatório.</h2>
+          <p>Cada pilar operacional numa ferramenta que você controla: treinamentos, POPs, cronograma, distribuição de clientes, controle de ausências e indicadores acompanhados ao vivo.</p>
+          <a href="https://brgxbrasil.github.io/app/" class="dark-link">Acessar a plataforma BRGX →</a>
+        </div>
+        <div class="dark-list">
+          <div><span>·</span>Treinamentos e trilhas por função</div>
+          <div><span>·</span>POPs e cronograma online</div>
+          <div><span>·</span>Distribuição de clientes em tempo real</div>
+          <div><span>·</span>Controle de ausências e recorrências</div>
+          <div><span>·</span>Índice Propositivo acompanhado ao vivo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTORIDADE -->
+  <section class="section" id="autoridade">
+    <div class="authority">
+      <img src="assets/diego-perfil.jpg" alt="Diego Borges">
+      <div>
+        <div class="eyebrow">Por trás da BRGX</div>
+        <h2>Diego Borges, gestor executivo há mais de 15 anos.</h2>
+        <p>Conduziu operações de beleza e bem-estar de alto padrão reconhecidas como referência em São Paulo e Rio de Janeiro.</p>
+        <p>Hoje aplica o mesmo padrão de gestão através da BRGX, unindo consultoria estratégica e tecnologia de execução.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contato">
+    <div class="eyebrow" style="text-align:center;">Comece pelo diagnóstico</div>
+    <h2>Sua operação precisa de gestão aplicada, não apenas intenção.</h2>
+    <p>O diagnóstico é a porta de entrada. Dez dias, poucas operações por mês, por ordem de fechamento.</p>
+    <div class="cta-stats">
+      <div class="stat"><small>Prazo</small><strong>10 dias</strong></div>
+      <div class="divider"></div>
+      <div class="stat"><small>Investimento</small><strong>R$ 3.500</strong></div>
+    </div>
+    <div>
+      <a href="https://wa.me/5511990130811" class="btn-primary" style="padding:18px 40px;font-size:16px;">Falar no WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-logo">BRGX</div>
+    <div>Sentido Aplicado à Gestão · Consultoria e plataforma de gestão · SP / RJ</div>
+  </footer>
+
 </div>
 
-<section class="sec" id="produto">
-  <span class="sec-ey">O produto</span>
-  <h2 class="sec-h">Dois Modelos de Contratação</h2>
-
-  <div style="border-top:.5px solid var(--bs)">
-    <div class="prod-model">
-      <div class="prod-toprow">
-        <span class="prod-name">Método ProPositivo</span>
-        <span class="prod-tag">Valor fechado</span>
-      </div>
-      <h3 class="prod-h3">Projeto com entrega definida.</h3>
-      <p class="prod-body">Diagnóstico completo da operação, plano de ação estruturado, implantação supervisionada e entrega documentada. Para operações que precisam resolver problemas específicos com objetivos claros. Valor único por projeto.</p>
-    </div>
-    <div class="prod-model">
-      <div class="prod-toprow">
-        <span class="prod-name">Consultoria Estratégica Avançada de Operação</span>
-        <span class="prod-tag">Mensalidade</span>
-      </div>
-      <h3 class="prod-h3">Presença permanente. Planejamento executivo completo.</h3>
-      <p class="prod-body">Acompanhamento contínuo com análise sistêmica, desenvolvimento comercial, controle de indicadores chave, sessões semanais, reuniões estratégicas mensais e acesso completo à plataforma BRGX. Para quem quer a melhor solução empresarial de gestão e operação, com credibilidade, autoridade e excelência consagrada.</p>
-    </div>
-  </div>
-
-  <p class="prod-invest">Investimento definido conforme o modelo e o porte da operação.</p>
-  <a href="https://wa.me/5511990130811?text=Ol%C3%A1%2C+vi+o+seu+site+e+tenho+interesse+na+consultoria.+Podemos+conversar%3F" target="_blank" class="btn-dark">Vamos falar sobre o melhor modelo pra sua empresa? &rarr;</a>
-  <a href="proposta.html" class="btn-ghost">Ver a proposta completa &rarr;</a>
-</section>
-
-<div class="div"></div>
-
-<section class="sec">
-  <span class="sec-ey">Diego Borges</span>
-  <p class="bio-body">Mais de quinze anos vivendo e criando a excelência de um atendimento consciente e sofisticado, dentro de operações que o mercado de beleza de luxo em São Paulo e no Rio de Janeiro reconhece como referência.</p>
-  <p class="bio-body">O que está aqui veio do campo.</p>
-</section>
-
-<div class="div"></div>
-
-<section class="sec">
-  <span class="sec-ey">Plataforma de execução</span>
-  <h2 class="sec-h">Plataforma BRGX</h2>
-  <p class="bio-body" style="margin-bottom:32px">Um hub de módulos estratégicos configurado de acordo com o perfil e as necessidades de cada operação. Cada cliente tem acesso aos módulos relevantes para o seu momento. Módulos podem ser adicionados ou removidos conforme a evolução do trabalho.</p>
-
-  <div class="platform-box">
-    <span class="platform-label">Alguns dos nossos módulos</span>
-    <div style="margin-top:16px">
-
-      <div class="mod-item">
-        <div class="mod-name">Atendimento de Inteligência Humana Automatizada <span class="mod-new">Novo</span></div>
-        <div class="mod-desc">Agente com voz personalizada por profissional. Primeira resposta, triagem e agendamento sem depender de disponibilidade humana imediata.</div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-name">Painel</div>
-        <div class="mod-desc">Visão geral do dia: rotina, execuções e indicadores-chave em um só lugar.</div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-name">Treinamentos</div>
-        <div class="mod-desc">Conteúdo em vídeo organizado por trilhas com progressão em avaliações interativas. O colaborador conclui um módulo e avança para o próximo. Formação com rastreabilidade.</div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-name">Manual de Procedimentos Padrão</div>
-        <div class="mod-desc">Buscador online com o passo a passo da operação, acessível pela equipe a qualquer momento. O padrão sempre presente.</div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-name">Cronograma</div>
-        <div class="mod-desc">Rotinas, atividades e responsáveis organizados por data e frequência. A operação sabe o que acontece, quando acontece e de quem é a responsabilidade.</div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-name">Matriz de Ativação</div>
-        <div class="mod-desc">Playbook comercial, scripts, tratativa de objeções, sequência de conversão, reativação inteligente.</div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-name">Controle Remoto em Tempo Real da Execução</div>
-        <div class="mod-desc">Mapeamento de processos, gatilhos e responsáveis por cada etapa da operação. Clareza sobre quem aciona o quê e em qual momento.</div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-name">Planejamento de Marketing</div>
-        <div class="mod-desc">Ativação de clientes que faltaram ou desmarcaram, lembrete do período ideal de retorno para serviços recorrentes, plano de recorrência, indicação e parceria local.</div>
-      </div>
-
-      <div class="mod-item">
-        <div class="mod-name">Módulo de Distribuição</div>
-        <div class="mod-desc">Gestão da fila e distribuição de clientes entre os profissionais em tempo real. Organiza o fluxo do salão com transparência e agilidade.</div>
-      </div>
-
-    </div>
-  </div>
-
-  <a href="https://brgxbrasil.github.io/app/" target="_blank" class="btn-dark" style="margin-top:24px">Acessar a plataforma Brgx &rarr;</a>
-</section>
-
-<div class="cta-wrap">
-  <div class="cta-inner">
-    <span class="cta-ey">Conversa inicial</span>
-    <h2 class="cta-h">Uma conversa pra ver se faz sentido.</h2>
-    <p class="cta-p">Sem formulário, sem apresentação.</p>
-    <a href="https://wa.me/5511990130811?text=Ol%C3%A1%2C+vi+o+seu+site+e+tenho+interesse+na+consultoria.+Podemos+conversar%3F" target="_blank" class="btn-wpp">Iniciar conversa &rarr;</a>
-  </div>
-</div>
-
-<footer class="footer">
-  <span class="f-logo">Diego Borges</span>
-  <span class="f-info">Consultoria estratégica empresarial &middot; São Paulo &amp; Rio de Janeiro</span>
-</footer>
-
+</x-dc>
 </body>
 </html>
