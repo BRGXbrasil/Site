@@ -129,4 +129,142 @@
     width: 100%;
     border-radius: 16px;
     border: 1px solid rgba(0,63,70,0.12);
-    box-shadow: 0 20px 50px rgba(17,24,
+    box-shadow: 0 20px 50px rgba(17,24,24,0.12);
+    display: block;
+  }
+
+  .authority-img {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(0,63,70,0.12);
+    box-shadow: 0 20px 50px rgba(17,24,24,0.12);
+    margin-top: 20px;
+  }
+
+  footer {
+    border-top: 1px solid rgba(0,63,70,0.12);
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--brgx-gray);
+  }
+
+  footer .foot-logo { font-weight: 800; color: var(--brgx-teal); }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .split { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="site-shell">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">
+      BRGX
+      <span>Sentido Aplicado à Gestão</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="proposta.html">Proposta</a>
+      <a href="https://wa.me/5511990130811" class="btn-primary">Fale com especialista</a>
+    </div>
+  </nav>
+
+  <!-- HERO / INTRO COM FOTO -->
+  <section class="section">
+    <div class="section-title">
+      <div class="eyebrow">Proposta Comercial</div>
+      <h2>Como a BRGX atua em diferentes frentes da sua operação</h2>
+    </div>
+
+    <div class="split">
+      <img src="assets/executive-office-glass-entrance-door-with-frosted (1).webp" alt="Entrada institucional BRGX">
+      <div>
+        <h3 style="font-size:26px; color:var(--brgx-teal); font-weight:800; margin-bottom:16px;">Diagnóstico, implantação e acompanhamento</h3>
+        <p style="font-size:15.5px; line-height:1.65; color:var(--brgx-gray-dark);">
+          Atuamos em múltiplas frentes ao mesmo tempo: análise de faturamento, estrutura de atendimento, 
+          liderança de equipe, processos operacionais, retenção de clientes e performance financeira.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE CONSULTORIA COM IMAGEM DE SALA DE REUNIÃO -->
+  <section class="section" style="padding-top: 40px; background: rgba(0,63,70,0.03);">
+    <div class="split">
+      <div>
+        <h3 style="font-size:24px; color:var(--brgx-teal); font-weight:800; margin-bottom:16px;">Consultoria e Pilares Estratégicos</h3>
+        <p style="font-size:15.5px; line-height:1.65; color:var(--brgx-gray-dark);">
+          Nossas reuniões e sessões de consultoria são conduzidas em ambientes que transmitem seriedade, 
+          profissionalismo e foco em resultados.
+        </p>
+      </div>
+      <img src="assets/frosted_glass_boardroom_lisbon.jpg" alt="Sala de reunião BRGX">
+    </div>
+  </section>
+
+  <!-- CARDS COM FOTO DE CONSULTOR -->
+  <section class="section" style="padding-top: 40px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto;">
+      
+      <div class="brgx-card">
+        <h3>Frente 1 — Atendimento e Recepção</h3>
+        <p>Transformamos o primeiro contato em ativação de cliente, com processos claros e mensuráveis.</p>
+      </div>
+
+      <div class="brgx-card">
+        <h3>Frente 2 — Operação e Processos</h3>
+        <p>POPs, cronogramas e rotinas que funcionam sem depender da sua presença constante.</p>
+      </div>
+
+      <div class="brgx-card">
+        <h3>Frente 3 — Performance e Comissão</h3>
+        <p>Modelo de comissão que alinha o time com os resultados que realmente importam.</p>
+      </div>
+
+    </div>
+
+    <div style="max-width: 1100px; margin: 40px auto 0;">
+      <img src="assets/convert-this-senior-consultant-presentation-photo.webp" alt="Consultor apresentando" class="authority-img">
+    </div>
+  </section>
+
+  <!-- SEÇÃO PLATAFORMA BRGX -->
+  <section class="section" style="padding-top: 60px; background: rgba(0,63,70,0.04);">
+    <div class="section-title">
+      <div class="eyebrow">Plataforma BRGX</div>
+      <h2>Gestão inteligente e visual em tempo real</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1100px; margin: 0 auto;">
+      <div>
+        <img src="assets/corporate-dashboard-ui-design-for-brgx-displayed-o.webp" alt="Dashboard da plataforma BRGX" style="width:100%; border-radius:16px; border:1px solid rgba(0,63,70,0.12); box-shadow:0 20px 50px rgba(17,24,24,0.12);">
+      </div>
+      <div>
+        <img src="assets/plataforma BRGX.PNG" alt="Print da plataforma BRGX" style="width:100%; border-radius:16px; border:1px solid rgba(0,63,70,0.12); box-shadow:0 20px 50px rgba(17,24,24,0.12);">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section" style="padding-top: 60px; padding-bottom: 100px; text-align: center;">
+    <a href="https://wa.me/5511990130811" class="btn-primary" style="padding:18px 40px; font-size:16px;">Quero ver a proposta completa</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-logo">BRGX</div>
+    <div>Sentido Aplicado à Gestão · Consultoria e plataforma de gestão · SP / RJ</div>
+  </footer>
+
+</div>
+</body>
+</html>
