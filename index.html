@@ -1,227 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BRGX — Proposta de Consultoria</title>
-<script src="./support.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diego Borges · Consultoria Estratégica Empresarial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Mono&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --brgx-teal: #003F46;
-    --brgx-teal-2: #075C63;
-    --brgx-gray: #6F7371;
-    --brgx-gray-dark: #343A3A;
-    --brgx-silver: #B8BCB8;
-    --brgx-gold: #A99563;
-    --brgx-gold-soft: #D6C8A2;
-    --brgx-paper: #F4F0E6;
-    --brgx-white: #FFFFFF;
-    --brgx-black: #111818;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: Inter, Arial, Helvetica, sans-serif; background: var(--brgx-paper); color: var(--brgx-black); }
-  a { text-decoration: none; color: inherit; }
-
-  .site-shell {
-    position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at top left, rgba(0,63,70,0.10), transparent 34%),
-      linear-gradient(180deg, #F7F3EA 0%, #EFE9DB 100%);
-  }
-
-  .nav {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 24px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 800;
-    font-size: 20px;
-    letter-spacing: -0.03em;
-    color: var(--brgx-teal);
-  }
-
-  .nav-logo span { color: var(--brgx-gray); font-weight: 500; font-size: 12px; display: block; letter-spacing: 0.02em; }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--brgx-gray-dark);
-  }
-
-  .nav-links a:hover { color: var(--brgx-teal); }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--brgx-teal);
-    color: #fff;
-    padding: 14px 26px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 14px;
-    box-shadow: 0 14px 34px rgba(0,63,70,0.22);
-  }
-
-  .section {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 88px 32px;
-  }
-
-  .section-title {
-    max-width: 760px;
-    margin: 0 auto 48px;
-    text-align: center;
-  }
-
-  .eyebrow {
-    color: var(--brgx-gold);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-
-  .section-title h2 {
-    font-size: clamp(30px, 3.6vw, 46px);
-    color: var(--brgx-teal);
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 16px;
-    font-weight: 800;
-  }
-
-  .brgx-card {
-    background: rgba(255,255,255,0.75);
-    border: 1px solid rgba(0,63,70,0.12);
-    border-radius: 14px;
-    padding: 28px;
-    box-shadow: 0 12px 36px rgba(17,24,24,0.05);
-  }
-
-  .brgx-card h3 { color: var(--brgx-teal); font-size: 18px; margin-bottom: 8px; font-weight: 700; }
-  .brgx-card p { color: var(--brgx-gray-dark); font-size: 14.5px; line-height: 1.6; }
-
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-
-  .split img {
-    width: 100%;
-    border-radius: 16px;
-    border: 1px solid rgba(0,63,70,0.12);
-    box-shadow: 0 20px 50px rgba(17,24,24,0.12);
-    display: block;
-  }
-
-  footer {
-    border-top: 1px solid rgba(0,63,70,0.12);
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 32px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    color: var(--brgx-gray);
-  }
-
-  footer .foot-logo { font-weight: 800; color: var(--brgx-teal); }
-
-  @media (max-width: 900px) {
-    .nav-links { display: none; }
-    .split { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 10px; text-align: center; }
-  }
-</style>
-</head>
-<body>
-<div class="site-shell">
-
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-logo">
-      BRGX
-      <span>Sentido Aplicado à Gestão</span>
-    </div>
-    <div class="nav-links">
-      <a href="index.html">Início</a>
-      <a href="proposta.html">Proposta</a>
-      <a href="https://wa.me/5511990130811" class="btn-primary">Fale com especialista</a>
-    </div>
-  </nav>
-
-  <!-- HERO / INTRO COM FOTO -->
-  <section class="section">
-    <div class="section-title">
-      <div class="eyebrow">Proposta Comercial</div>
-      <h2>Como a BRGX atua em diferentes frentes da sua operação</h2>
-    </div>
-
-    <div class="split">
-      <img src="assets/consultoria-reuniao.jpg" alt="Reunião de consultoria BRGX">
-      <div>
-        <h3 style="font-size:26px; color:var(--brgx-teal); font-weight:800; margin-bottom:16px;">Diagnóstico, implantação e acompanhamento</h3>
-        <p style="font-size:15.5px; line-height:1.65; color:var(--brgx-gray-dark);">
-          Atuamos em múltiplas frentes ao mesmo tempo: análise de faturamento, estrutura de atendimento, 
-          liderança de equipe, processos operacionais, retenção de clientes e performance financeira.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CARDS COM FOTO ADICIONAL -->
-  <section class="section" style="padding-top: 40px;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto;">
-      
-      <div class="brgx-card">
-        <h3>Frente 1 — Atendimento e Recepção</h3>
-        <p>Transformamos o primeiro contato em ativação de cliente, com processos claros e mensuráveis.</p>
-      </div>
-
-      <div class="brgx-card">
-        <h3>Frente 2 — Operação e Processos</h3>
-        <p>POPs, cronogramas e rotinas que funcionam sem depender da sua presença constante.</p>
-      </div>
-
-      <div class="brgx-card">
-        <h3>Frente 3 — Performance e Comissão</h3>
-        <p>Modelo de comissão que alinha o time com os resultados que realmente importam.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="section" style="padding-top: 60px; padding-bottom: 100px; text-align: center;">
-    <a href="https://wa.me/5511990130811" class="btn-primary" style="padding:18px 40px; font-size:16px;">Quero ver a proposta completa</a>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="foot-logo">BRGX</div>
-    <div>Sentido Aplicado à Gestão · Consultoria e plataforma de gestão · SP / RJ</div>
-  </footer>
-
-</div>
-</body>
-</html>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4efe7; --bg-1:#ebe5d8; --text:#17130e; --sub:#4a3f32; --muted:#7e7060;
+  --gold:#8c6b2a; --gold-l:#a07c35; --bs:rgba(23,19,14,.09); --w:680px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;text-wrap:pretty}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(244,239,231,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:.5px solid rgba(255,255,255,.5)}
+.nav-logo{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--bg);background:var(--text);padding:9px 20px;text-decoration:none;transition:background .18s}
+.nav-btn:hover{background:var(--gold)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 40px 80px;max-width:var(--w);margin:0 auto}
+.ey{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;display:block}
+.hero-h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,7vw,62px);font-weight:400;line-height:1.1;margin-bottom:8px}
+.hero-h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,7vw,62px);font-weight:600;line-height:1.08;color:var(--gold);margin-bottom:40px}
+.hero-p{font-size:17px;color:var(--sub);line-height:1.8;max-width:480px;margin-bottom:48px}
+.btn-dark{display:inline-flex;align-items:center;gap:10px;background:var(--text);color:var(--bg);font-size:14px;font-weight:500;letter-spacing:.04em;padding:15px 30px;text-decoration:none;transition:background .18s}
+.btn-dark:hover{background:var(--gold)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;border:.5px solid rgba(23,19,14,.25);color:var(--sub);font-size:14px;padding:15px 30px;text-decoration:none;transition:all .18s;margin-left:14px}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.div{width:100%;height:.5px;background:var(--bs)}
+.sec{padding:88px 40px;max-width:var(--w);margin:0 auto}
+.sec-ey{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block}
+.sec-h{font-family:'Playfair Display',Georgia,serif;font-size:clamp(26px,4vw,36px);font-weight:400;line-height:1.25;margin-bottom:32px}
+.registro-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.registro-item{overflow:hidden}
+.registro-img{width:100%;aspect-ratio:4/3;object-fit:cover;border:.5px solid var(--bs);display:block}
+.registro-caption{padding:16px 0 0}
+.reg-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px}
+.reg-desc{font-size:13px;color:var(--sub);line-height:1.7}
+.names-list{border-top:.5px solid var(--bs);margin-top:40px}
+.name-row{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:28px 0;border-bottom:.5px solid var(--bs);flex-wrap:wrap}
+.n-name{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:400;color:var(--text);display:block;margin-bottom:8px}
+.n-desc{font-size:14px;color:var(--sub);line-height:1.65;max-width:380px}
+.n-brand{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap;flex-shrink:0}
+.pq-wrap{padding:64px 40px;border-top:.5px solid var(--bs);border-bottom:.5px solid var(--bs);background:var(--bg-1)}
+.pq-inner{max-width:var(--w);margin:0 auto;display:flex;gap:32px;align-items:stretch}
+.pq-rule{width:2px;background:var(--gold);flex-shrink:0}
+.pq-text{font-family:'Playfair Display',Georgia,serif;font-size:clamp(19px,2.6vw,
