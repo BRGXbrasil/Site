@@ -141,6 +141,107 @@
     margin-top: 20px;
   }
 
+  /* --- Planos e checkout --- */
+  .planos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+
+  .plano {
+    display: flex;
+    flex-direction: column;
+    background: var(--brgx-white);
+    border: 1px solid rgba(0,63,70,0.12);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: 0 12px 36px rgba(17,24,24,0.06);
+  }
+
+  .plano.destaque {
+    border-color: var(--brgx-gold);
+    box-shadow: 0 20px 50px rgba(169,149,99,0.18);
+  }
+
+  .plano-tag {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brgx-gold);
+    margin-bottom: 12px;
+  }
+
+  .plano h3 { color: var(--brgx-teal); font-size: 21px; font-weight: 800; margin-bottom: 6px; }
+  .plano .plano-sub { color: var(--brgx-gray); font-size: 13.5px; margin-bottom: 22px; }
+
+  .plano-preco {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--brgx-teal);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .plano-preco small { display: block; font-size: 13px; font-weight: 600; color: var(--brgx-gray); letter-spacing: 0; margin-top: 6px; }
+
+  .plano ul { list-style: none; margin: 24px 0; padding: 0; }
+  .plano li {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--brgx-gray-dark);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,63,70,0.07);
+  }
+  .plano li:last-child { border-bottom: none; }
+  .plano li::before { content: "·"; color: var(--brgx-gold); font-weight: 800; flex-shrink: 0; }
+
+  .plano-cta { margin-top: auto; }
+
+  .btn-checkout {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--brgx-teal);
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 14px 34px rgba(0,63,70,0.22);
+  }
+
+  .btn-checkout.alt {
+    background: transparent;
+    color: var(--brgx-teal);
+    border: 1px solid rgba(0,63,70,0.28);
+    box-shadow: none;
+  }
+
+  .plano-nota { font-size: 12px; color: var(--brgx-gray); text-align: center; margin-top: 12px; line-height: 1.5; }
+
+  .atendimento {
+    max-width: 900px;
+    margin: 48px auto 0;
+    padding: 28px 32px;
+    border-radius: 14px;
+    background: rgba(0,63,70,0.05);
+    border: 1px solid rgba(0,63,70,0.10);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .atendimento p { color: var(--brgx-gray-dark); font-size: 14.5px; line-height: 1.6; margin: 0; flex: 1; min-width: 260px; }
+  .atendimento strong { color: var(--brgx-teal); }
+
   footer {
     border-top: 1px solid rgba(0,63,70,0.12);
     max-width: 1180px;
@@ -159,6 +260,8 @@
     .nav-links { display: none; }
     .split { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 10px; text-align: center; }
+    .atendimento { flex-direction: column; align-items: flex-start; }
+    .atendimento .btn-primary { width: 100%; }
   }
 </style>
 </head>
@@ -173,8 +276,9 @@
     </div>
     <div class="nav-links">
       <a href="index.html">Início</a>
-      <a href="proposta.html">Proposta</a>
-      <a href="https://wa.me/5511990130811" class="btn-primary">Fale com especialista</a>
+      <a href="#planos">Planos</a>
+      <a href="https://brgxbrasil.github.io/app/">Plataforma</a>
+      <a href="https://wa.me/5511990130811?text=Ol%C3%A1%2C+estou+na+p%C3%A1gina+de+proposta+da+BRGX+e+quero+falar+com+um+especialista." class="btn-primary">Fale com especialista</a>
     </div>
   </nav>
 
@@ -252,11 +356,86 @@
         <img src="assets/plataforma BRGX.PNG" alt="Print da plataforma BRGX" style="width:100%; border-radius:16px; border:1px solid rgba(0,63,70,0.12); box-shadow:0 20px 50px rgba(17,24,24,0.12);">
       </div>
     </div>
+
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://brgxbrasil.github.io/app/" class="btn-primary" target="_blank" rel="noopener">Conhecer a plataforma</a>
+      <p style="font-size:13px; color:var(--brgx-gray); margin-top:12px;">
+        Os módulos são liberados conforme o momento da operação e acompanham a consultoria.
+      </p>
+    </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="section" style="padding-top: 60px; padding-bottom: 100px; text-align: center;">
-    <a href="https://wa.me/5511990130811" class="btn-primary" style="padding:18px 40px; font-size:16px;">Quero ver a proposta completa</a>
+  <!-- PLANOS E CHECKOUT -->
+  <section class="section" id="planos" style="padding-top: 80px;">
+    <div class="section-title">
+      <div class="eyebrow">Investimento</div>
+      <h2>Dois modelos de contratação</h2>
+      <p style="color:var(--brgx-gray-dark); font-size:16px; line-height:1.65;">
+        Comece pelo diagnóstico ou entre direto no acompanhamento contínuo.
+        Em ambos, a Plataforma BRGX acompanha a execução.
+      </p>
+    </div>
+
+    <div class="planos-grid">
+
+      <div class="plano destaque">
+        <div class="plano-tag">Porta de entrada</div>
+        <h3>Método ProPositivo</h3>
+        <p class="plano-sub">Diagnóstico completo, com entrega definida.</p>
+
+        <div class="plano-preco">
+          R$ 3.500
+          <small>Pagamento único · 10 dias de imersão</small>
+        </div>
+
+        <ul>
+          <li>Seu Índice Propositivo, pilar a pilar, de 0 a 100</li>
+          <li>O ponto de maior impacto em cada pilar, com números</li>
+          <li>Uma decisão prioritária por pilar abaixo do ideal</li>
+          <li>Relatório por profissional e categoria, com plano de ação</li>
+        </ul>
+
+        <div class="plano-cta">
+          <!-- TODO: trocar pela URL real do produto na Hotmart (ex.: https://pay.hotmart.com/XXXXXXXXX) -->
+          <a href="https://pay.hotmart.com/" class="btn-checkout" target="_blank" rel="noopener">Contratar diagnóstico</a>
+          <p class="plano-nota">Checkout seguro via Hotmart. Após o pagamento, o onboarding é agendado em até 1 dia útil.</p>
+        </div>
+      </div>
+
+      <div class="plano">
+        <div class="plano-tag">Acompanhamento</div>
+        <h3>Consultoria Estratégica Avançada</h3>
+        <p class="plano-sub">Presença permanente e planejamento executivo.</p>
+
+        <div class="plano-preco">
+          Sob consulta
+          <small>Mensalidade · valor conforme o porte da operação</small>
+        </div>
+
+        <ul>
+          <li>Sessões semanais e reunião estratégica mensal</li>
+          <li>Análise sistêmica e desenvolvimento comercial</li>
+          <li>Controle de indicadores-chave</li>
+          <li>Acesso completo à Plataforma BRGX</li>
+        </ul>
+
+        <div class="plano-cta">
+          <!-- TODO: trocar pela URL real do produto de assinatura na Hotmart -->
+          <a href="https://pay.hotmart.com/" class="btn-checkout alt" target="_blank" rel="noopener">Assinar consultoria</a>
+          <p class="plano-nota">O valor é confirmado no atendimento, conforme o porte. O checkout já abre com o plano definido.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ENCAMINHAMENTO PARA ATENDIMENTO -->
+    <div class="atendimento">
+      <p>
+        <strong>Ainda em dúvida sobre qual modelo faz sentido?</strong><br>
+        Fale com um especialista antes de contratar. A conversa é direta, sem formulário e sem apresentação.
+      </p>
+      <a href="https://wa.me/5511990130811?text=Ol%C3%A1%2C+vi+os+planos+na+p%C3%A1gina+de+proposta+da+BRGX+e+quero+ajuda+para+escolher+o+modelo+ideal+para+a+minha+opera%C3%A7%C3%A3o." class="btn-primary" target="_blank" rel="noopener">Falar com especialista</a>
+    </div>
   </section>
 
   <!-- FOOTER -->
