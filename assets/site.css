@@ -1,10 +1,11 @@
 /* BRGX — sistema visual compartilhado (index, metodo, plataforma, valores) */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0A0A0A; --bg-1:#141414; --bg-2:#1B1B1B;
-  --text:#F5F3EE; --sub:#B9B5AC; --muted:#7C776D;
-  --gold:#D4AF37; --gold-soft:#E7CC7A;
-  --bs:rgba(245,243,238,.10);
+  --bg:#F4EFE7; --bg-1:#EBE5D8; --bg-2:#E3DBC9;
+  --ink:#17130E;
+  --text:#17130E; --sub:#5B5346; --muted:#8C8275;
+  --gold:#8C6B2A; --gold-soft:#A07C35;
+  --bs:rgba(23,19,14,.12);
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -16,12 +17,12 @@ a{color:inherit}
 img{max-width:100%;display:block}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(10,10,10,.86);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:.5px solid var(--bs)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;background:rgba(244,239,231,.88);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:.5px solid var(--bs)}
 .nav-logo{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
 .nav-links{display:flex;align-items:center;gap:26px}
 .nav-link{font-family:var(--mono);font-size:11px;color:var(--sub);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:color .18s}
 .nav-link:hover,.nav-link.active{color:var(--gold)}
-.nav-btn{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:10px 20px;text-decoration:none;transition:background .18s;border-radius:2px}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#F4EFE7;background:var(--gold);padding:10px 20px;text-decoration:none;transition:background .18s;border-radius:2px}
 .nav-btn:hover{background:var(--gold-soft)}
 .nav-toggle{display:none}
 @media(max-width:860px){
@@ -38,7 +39,7 @@ body{padding-top:64px}
 .sec-h{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:500;line-height:1.2;margin-bottom:32px}
 .sec-lead{font-size:17px;color:var(--sub);line-height:1.8;max-width:640px;margin-bottom:32px}
 
-.btn-solid{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--bg);font-size:14.5px;font-weight:600;letter-spacing:.03em;padding:16px 32px;text-decoration:none;transition:background .18s,transform .18s;border-radius:2px}
+.btn-solid{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#F4EFE7;font-size:14.5px;font-weight:600;letter-spacing:.03em;padding:16px 32px;text-decoration:none;transition:background .18s,transform .18s;border-radius:2px}
 .btn-solid:hover{background:var(--gold-soft);transform:translateY(-1px)}
 .btn-ghost{display:inline-flex;align-items:center;gap:10px;border:.5px solid var(--bs);color:var(--sub);font-size:14px;padding:15px 30px;text-decoration:none;transition:all .18s;margin-left:14px;border-radius:2px}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
