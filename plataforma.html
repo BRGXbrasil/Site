@@ -9,22 +9,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>
-.hero-simple{padding:150px 40px 60px;max-width:var(--w);margin:0 auto}
-.hero-simple h1{font-family:var(--serif);font-size:clamp(32px,5vw,48px);font-weight:500;line-height:1.15;margin-bottom:20px}
+.hero-simple{padding:144px 40px 56px;max-width:var(--w);margin:0 auto}
+.hero-simple h1{font-family:var(--sans);font-weight:800;letter-spacing:-.02em;font-size:clamp(32px,5vw,50px);line-height:1.1;margin-bottom:18px;color:var(--ink)}
 .hero-simple p{font-size:16.5px;color:var(--sub);line-height:1.8;max-width:620px}
-.mod-block{max-width:var(--w);margin:0 auto;padding:64px 40px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;border-top:.5px solid var(--bs)}
+.mod-block{max-width:var(--w);margin:0 auto;padding:56px 40px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;border-top:.5px solid var(--bs)}
 .mod-block.rev .mod-shot{order:2}
-.mod-num{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.14em;display:block;margin-bottom:16px}
-.mod-block h2{font-family:var(--serif);font-size:clamp(24px,3vw,32px);font-weight:500;margin-bottom:14px}
-.mod-badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:.5px solid var(--gold);border-radius:3px;padding:2px 7px;margin-left:8px;vertical-align:middle}
+.mod-num{font-family:var(--sans);font-weight:700;font-size:12.5px;color:var(--gold);display:block;margin-bottom:14px}
+.mod-block h2{font-family:var(--sans);font-weight:800;letter-spacing:-.015em;font-size:clamp(23px,3vw,30px);margin-bottom:14px;color:var(--ink)}
+.mod-badge{display:inline-block;font-family:var(--sans);font-weight:700;font-size:10px;color:#FAFAF7;background:var(--gold);border-radius:var(--r-pill);padding:3px 10px;margin-left:8px;vertical-align:middle}
+.mod-badge.soon{color:var(--sub);background:var(--bg-2)}
+.mod-sub-h{font-family:var(--sans);font-weight:700;font-size:12.5px;color:var(--gold);text-align:left;max-width:var(--w);margin:0 auto 14px;padding:0 40px}
+@media(max-width:620px){.mod-sub-h{padding:0 22px}}
 .mod-block p{font-size:15.5px;color:var(--sub);line-height:1.8}
-.mod-shot{background:var(--bg-1);border:.5px solid var(--bs);padding:18px;display:flex;justify-content:center}
-.mod-shot img{max-height:520px;width:auto;object-fit:contain;border-radius:4px}
+.mod-shot{display:flex;justify-content:center}
+.mod-shot img{max-height:520px;width:auto;object-fit:contain}
 .mod-shot.wide img{max-height:none;width:100%}
-.mod-simple-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--bs);border:1px solid var(--bs);max-width:var(--w);margin:0 auto}
-.mod-simple{background:var(--bg);padding:30px 26px}
-.mod-simple h3{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:10px}
+.mod-simple-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;max-width:var(--w);margin:0 auto}
+.mod-simple{background:var(--bg-1);padding:28px 24px;border-radius:var(--r-card)}
+.mod-simple h3{font-family:var(--sans);font-weight:700;letter-spacing:-.005em;font-size:18px;margin-bottom:10px;color:var(--ink)}
 .mod-simple p{font-size:14px;color:var(--sub);line-height:1.7}
+.arch-note{background:var(--dark);padding:22px 26px;border-radius:var(--r-card);margin-bottom:8px}
+.arch-note p{font-size:14.5px;color:rgba(250,250,247,.78);line-height:1.75;max-width:640px}
 @media(max-width:820px){
   .mod-block,.mod-block.rev{grid-template-columns:1fr}
   .mod-block.rev .mod-shot{order:-1}
@@ -52,13 +57,19 @@
   <p>Um hub de módulos estratégicos configurado de acordo com o perfil e as necessidades de cada operação. Cada cliente tem acesso aos módulos relevantes para o seu momento — módulos podem ser adicionados ou removidos conforme a evolução do trabalho. As telas abaixo são capturas reais da plataforma.</p>
 </section>
 
+<section class="sec" style="padding-top:0;padding-bottom:16px">
+  <div class="arch-note">
+    <p>Acesso incluído na Consultoria Estratégica Avançada. Também disponível para operações que já concluíram o diagnóstico ProPositivo e têm um plano de ação em mãos.</p>
+  </div>
+</section>
+
 <div class="mod-block">
   <div>
     <span class="mod-num">01 · Painel</span>
     <h2>Visão geral do dia</h2>
     <p>Rotina, execuções e indicadores-chave em um só lugar. O painel mostra o progresso do dia assim que a operação tem um cronograma ativo.</p>
   </div>
-  <div class="mod-shot"><img src="assets/plataforma-brgx-painel.png" alt="Painel da plataforma BRGX"></div>
+  <div class="mod-shot"><div class="frame-dark"><img src="assets/plataforma-brgx-painel.png" alt="Painel da plataforma BRGX"></div></div>
 </div>
 
 <div class="mod-block rev">
@@ -67,7 +78,7 @@
     <h2>Formação com rastreabilidade</h2>
     <p>Conteúdo em vídeo organizado por trilhas com progressão em avaliações interativas. O colaborador conclui um nível e avança para o próximo — do fundamento à governança.</p>
   </div>
-  <div class="mod-shot"><img src="assets/plataforma-brgx-treinamentos.png" alt="Módulo de Treinamentos da plataforma BRGX"></div>
+  <div class="mod-shot"><div class="frame-dark"><img src="assets/plataforma-brgx-treinamentos.png" alt="Módulo de Treinamentos da plataforma BRGX"></div></div>
 </div>
 
 <div class="mod-block">
@@ -76,7 +87,7 @@
     <h2>O padrão sempre presente</h2>
     <p>Buscador online com o passo a passo da operação, organizado por setor — recepção, cabeleireiros, manicures, estoque — acessível pela equipe a qualquer momento.</p>
   </div>
-  <div class="mod-shot"><img src="assets/plataforma-brgx-procedimentos.png" alt="Manual de Procedimentos Padrão da plataforma BRGX"></div>
+  <div class="mod-shot"><div class="frame-dark"><img src="assets/plataforma-brgx-procedimentos.png" alt="Manual de Procedimentos Padrão da plataforma BRGX"></div></div>
 </div>
 
 <div class="mod-block rev">
@@ -85,35 +96,42 @@
     <h2>Fila justa, em tempo real</h2>
     <p>Gestão da fila e distribuição de clientes entre os profissionais por departamento, em tempo real. Organiza o fluxo do salão com transparência e agilidade.</p>
   </div>
-  <div class="mod-shot"><img src="assets/plataforma-brgx-lista-da-vez.png" alt="Módulo de Distribuição (Lista da Vez) da plataforma BRGX"></div>
+  <div class="mod-shot"><div class="frame-dark"><img src="assets/plataforma-brgx-lista-da-vez.png" alt="Módulo de Distribuição (Lista da Vez) da plataforma BRGX"></div></div>
 </div>
 
 <div class="div"></div>
 
 <section class="sec" style="text-align:center">
-  <span class="ey">Mais módulos</span>
-  <h2 class="sec-h">Outras frentes do hub, ativadas conforme o momento da operação</h2>
+  <span class="ey">Mais frentes</span>
+  <h2 class="sec-h">Outras frentes do hub</h2>
 </section>
 
-<div class="mod-simple-grid">
-  <div class="mod-simple">
-    <h3>Atendimento com IA <span class="mod-badge">Novo</span></h3>
-    <p>Agente com voz personalizada por profissional. Primeira resposta, triagem e agendamento sem depender de disponibilidade humana imediata.</p>
-  </div>
+<span class="mod-sub-h">Já disponível dentro do Painel</span>
+<div class="mod-simple-grid" style="margin-bottom:8px">
   <div class="mod-simple">
     <h3>Cronograma</h3>
-    <p>Rotinas, atividades e responsáveis organizados por data e frequência. A operação sabe o que acontece, quando acontece e de quem é a responsabilidade.</p>
+    <p>Rotinas, atividades e responsáveis organizados por data e frequência, acompanhados direto no Painel. A operação sabe o que acontece, quando acontece e de quem é a responsabilidade.</p>
   </div>
   <div class="mod-simple">
     <h3>Matriz de Ativação</h3>
-    <p>Playbook comercial, scripts, tratativa de objeções, sequência de conversão, reativação inteligente.</p>
+    <p>Playbook de ativações recorrentes — aniversariantes, inativas, faltantes, retorno de serviço — com registro de execução direto no Painel.</p>
+  </div>
+</div>
+
+<div class="div" style="max-width:var(--w);margin:32px auto"></div>
+
+<span class="mod-sub-h">Em desenvolvimento</span>
+<div class="mod-simple-grid">
+  <div class="mod-simple">
+    <h3>Atendimento com IA <span class="mod-badge soon">Em breve</span></h3>
+    <p>Agente com voz personalizada por profissional. Primeira resposta, triagem e agendamento sem depender de disponibilidade humana imediata.</p>
   </div>
   <div class="mod-simple">
-    <h3>Controle de Execução</h3>
+    <h3>Controle de Execução <span class="mod-badge soon">Em breve</span></h3>
     <p>Mapeamento de processos, gatilhos e responsáveis por cada etapa da operação. Clareza sobre quem aciona o quê e em qual momento.</p>
   </div>
   <div class="mod-simple">
-    <h3>Planejamento de Marketing</h3>
+    <h3>Planejamento de Marketing <span class="mod-badge soon">Em breve</span></h3>
     <p>Ativação de clientes que faltaram ou desmarcaram, lembrete do período ideal de retorno para serviços recorrentes, plano de recorrência, indicação e parceria local.</p>
   </div>
 </div>
