@@ -40,12 +40,27 @@
 .prod-body{font-size:15.5px;color:var(--sub);line-height:1.8;margin-bottom:14px}
 .prod-metric{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--gold);border:.5px solid rgba(212,175,55,.35);padding:6px 12px;border-radius:2px}
 .prod-invest{font-family:var(--serif);font-size:19px;font-style:italic;margin:30px 0 22px}
-.platform-teaser{border:.5px solid var(--bs);background:var(--bg-1);padding:40px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.platform-teaser{border:.5px solid var(--gold);background:var(--bg-1);padding:40px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;position:relative}
+.platform-teaser::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold)}
 .platform-teaser p{font-size:15px;color:var(--sub);line-height:1.75;max-width:560px}
+.name-row{position:relative;padding-left:20px}
+.name-row::before{content:'';position:absolute;left:0;top:30px;width:10px;height:1px;background:var(--gold)}
+.arch-wrap{border-top:.5px solid var(--bs);margin-top:40px;padding-top:40px}
+.arch-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:20px;align-items:start;margin-top:8px}
+.arch-step{background:var(--bg-1);border:.5px solid var(--bs);padding:26px 22px}
+.arch-num{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.1em;display:block;margin-bottom:10px}
+.arch-step h3{font-family:var(--serif);font-size:19px;font-weight:500;margin-bottom:8px}
+.arch-step p{font-size:13.5px;color:var(--sub);line-height:1.6}
+.arch-arrow{color:var(--gold);font-size:20px;align-self:center;padding-top:40px}
+.model-badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:.5px solid var(--gold);border-radius:3px;padding:2px 7px;margin-left:10px;vertical-align:middle}
 @media(max-width:860px){
   .hero{grid-template-columns:1fr;padding-top:120px}
   .hero-img{order:-1;aspect-ratio:16/9}
   .platform-teaser{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .arch-flow{grid-template-columns:1fr}
+  .arch-arrow{display:none}
 }
 </style>
 </head>
@@ -157,7 +172,7 @@
     </div>
     <div class="prod-model">
       <div class="prod-toprow">
-        <span class="prod-name">Consultoria Estratégica Avançada de Operação</span>
+        <span class="prod-name">Consultoria Estratégica Avançada de Operação<span class="model-badge">Recomendado</span></span>
         <span class="prod-tag">Mensalidade</span>
       </div>
       <h3 class="prod-h3">Presença permanente. Planejamento executivo completo.</h3>
@@ -169,6 +184,30 @@
   <p class="prod-invest">Investimento definido conforme o modelo e o porte da operação.</p>
   <a href="https://wa.me/5511990130811?text=Ol%C3%A1%2C+vi+o+seu+site+e+tenho+interesse+na+consultoria.+Podemos+conversar%3F" target="_blank" rel="noopener" class="btn-solid">Qual modelo se encaixa na sua operação? &rarr;</a>
   <a href="proposta.html" class="btn-ghost">Ver estrutura de trabalho &rarr;</a>
+
+  <div class="arch-wrap">
+    <span class="ey">Como a oferta funciona</span>
+    <h2 class="sec-h" style="font-size:clamp(22px,2.6vw,28px)">Método, implantação e plataforma — uma sequência, não três produtos separados.</h2>
+    <div class="arch-flow">
+      <div class="arch-step">
+        <span class="arch-num">01</span>
+        <h3>Método ProPositivo</h3>
+        <p>Diagnóstico estruturado dos 7 pilares da operação. Resultado: Índice Propositivo + Plano de Ação.</p>
+      </div>
+      <div class="arch-arrow">&rarr;</div>
+      <div class="arch-step">
+        <span class="arch-num">02</span>
+        <h3>Consultoria Estratégica Avançada</h3>
+        <p>Implantação supervisionada do plano, com acompanhamento contínuo — sessões semanais e reuniões estratégicas mensais.</p>
+      </div>
+      <div class="arch-arrow">&rarr;</div>
+      <div class="arch-step">
+        <span class="arch-num">03</span>
+        <h3>Plataforma BRGX</h3>
+        <p>Onde o método vira rotina — incluída na Consultoria Estratégica, disponível também para operações que já têm diagnóstico e plano prontos.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="div"></div>
