@@ -13,18 +13,23 @@
 .hero-simple h1{font-family:var(--sans);font-weight:800;letter-spacing:-.02em;font-size:clamp(32px,5vw,50px);line-height:1.1;margin-bottom:18px;color:var(--ink)}
 .hero-simple p{font-size:16.5px;color:var(--sub);line-height:1.8;max-width:620px}
 .feature-img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-card);margin:8px 0 8px}
-.pillars-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
-.pillar-item{background:var(--bg-1);padding:26px 24px;border-radius:var(--r-card)}
-.pillar-num{font-family:var(--sans);font-weight:700;font-size:12px;color:var(--gold);display:block;margin-bottom:10px}
-.pillar-item h3{font-family:var(--sans);font-weight:700;letter-spacing:-.01em;font-size:19px;margin-bottom:8px;color:var(--ink)}
-.pillar-item p{font-size:14.5px;color:var(--sub);line-height:1.65}
+.pillar-system{border-top:1px solid var(--bs);margin-top:8px}
+.pillar-row{padding:30px 0;border-bottom:1px solid var(--bs)}
+.pillar-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.pillar-head .n{font-family:var(--sans);font-weight:800;font-size:13px;color:#FAFAF7;background:var(--gold);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pillar-head h3{font-family:var(--sans);font-weight:800;letter-spacing:-.01em;font-size:21px;color:var(--ink)}
+.pillar-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bs);border:1px solid var(--bs);border-radius:var(--r-sm);overflow:hidden}
+.pillar-stage{background:var(--bg-1);padding:16px 18px}
+.pillar-stage .l{font-family:var(--sans);font-weight:700;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px}
+.pillar-stage p{font-size:13.5px;color:var(--sub);line-height:1.55;margin:0}
+@media(max-width:760px){.pillar-flow{grid-template-columns:1fr}}
 .steps-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
 .step-card{background:var(--bg-1);padding:30px 24px;border-radius:var(--r-card)}
 .step-num{font-family:var(--sans);font-weight:800;font-size:30px;color:var(--gold);line-height:1;margin-bottom:14px}
 .step-card h3{font-family:var(--sans);font-weight:700;letter-spacing:-.01em;font-size:18px;margin-bottom:10px;color:var(--ink)}
 .step-card p{font-size:14.5px;color:var(--sub);line-height:1.7}
 @media(max-width:760px){
-  .pillars-grid,.steps-row{grid-template-columns:1fr}
+  .steps-row{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -57,16 +62,79 @@
 
 <section class="sec">
   <span class="ey">A estrutura</span>
-  <h2 class="sec-h">Os 7 pilares da operação</h2>
-  <p class="sec-lead">Cada pilar é avaliado, recebe uma nota e uma decisão prioritária dentro do diagnóstico ProPositivo.</p>
-  <div class="pillars-grid">
-    <div class="pillar-item"><span class="pillar-num">01</span><h3>Diagnóstico</h3><p>Onde a operação está, com número.</p></div>
-    <div class="pillar-item"><span class="pillar-num">02</span><h3>Liderança</h3><p>O que só você resolve, e por quê.</p></div>
-    <div class="pillar-item"><span class="pillar-num">03</span><h3>Organização</h3><p>Papéis e processos que não dependem de memória.</p></div>
-    <div class="pillar-item"><span class="pillar-num">04</span><h3>Operação</h3><p>Rotinas e POPs que rodam sem você.</p></div>
-    <div class="pillar-item"><span class="pillar-num">05</span><h3>Atendimento</h3><p>A recepção deixa de perder cliente.</p></div>
-    <div class="pillar-item"><span class="pillar-num">06</span><h3>Performance</h3><p>Comissão que paga o comportamento certo.</p></div>
-    <div class="pillar-item" style="grid-column:span 2"><span class="pillar-num">07</span><h3>Retenção</h3><p>O que faz o cliente voltar, e o que só ocupa horário na agenda.</p></div>
+  <h2 class="sec-h">Os 7 pilares, um sistema só</h2>
+  <p class="sec-lead">Cada pilar segue a mesma lógica: o problema que ele resolve, o princípio que orienta a decisão, a ação que entra na operação, e o que passa a ser medido. Não são sete iniciativas separadas — é uma leitura aplicada de forma consistente na operação inteira.</p>
+
+  <div class="pillar-system">
+    <div class="pillar-row">
+      <div class="pillar-head"><span class="n">1</span><h3>Diagnóstico</h3></div>
+      <div class="pillar-flow">
+        <div class="pillar-stage"><span class="l">Problema</span><p>Decisões tomadas por impressão, sem clareza de onde a operação perde padrão ou dinheiro.</p></div>
+        <div class="pillar-stage"><span class="l">Princípio</span><p>Diagnóstico com número, não com opinião.</p></div>
+        <div class="pillar-stage"><span class="l">Ação</span><p>Dez dias de imersão avaliando os 7 pilares da operação.</p></div>
+        <div class="pillar-stage"><span class="l">Indicador</span><p>Índice Propositivo, pilar a pilar.</p></div>
+      </div>
+    </div>
+
+    <div class="pillar-row">
+      <div class="pillar-head"><span class="n">2</span><h3>Liderança</h3></div>
+      <div class="pillar-flow">
+        <div class="pillar-stage"><span class="l">Problema</span><p>O dono resolve tudo pessoalmente — a operação trava quando ele não está por perto.</p></div>
+        <div class="pillar-stage"><span class="l">Princípio</span><p>O que só o dono resolve, e por quê — delegar com critério, não abandonar.</p></div>
+        <div class="pillar-stage"><span class="l">Ação</span><p>Mapeamento das decisões que dependem só do dono e plano de transferência.</p></div>
+        <div class="pillar-stage"><span class="l">Indicador</span><p>Decisões-chave que a operação toma sem o dono presente.</p></div>
+      </div>
+    </div>
+
+    <div class="pillar-row">
+      <div class="pillar-head"><span class="n">3</span><h3>Organização</h3></div>
+      <div class="pillar-flow">
+        <div class="pillar-stage"><span class="l">Problema</span><p>Processo vive só na cabeça de quem está há mais tempo — quem sai leva o padrão junto.</p></div>
+        <div class="pillar-stage"><span class="l">Princípio</span><p>Processo que não depende de memória.</p></div>
+        <div class="pillar-stage"><span class="l">Ação</span><p>Mapeamento de papéis e criação de POPs por setor.</p></div>
+        <div class="pillar-stage"><span class="l">Indicador</span><p>POPs implantados por setor, sobre o total mapeado.</p></div>
+      </div>
+    </div>
+
+    <div class="pillar-row">
+      <div class="pillar-head"><span class="n">4</span><h3>Operação</h3></div>
+      <div class="pillar-flow">
+        <div class="pillar-stage"><span class="l">Problema</span><p>A rotina diária não é seguida com consistência — cada turno funciona de um jeito.</p></div>
+        <div class="pillar-stage"><span class="l">Princípio</span><p>Rotinas e POPs que rodam sem o dono presente.</p></div>
+        <div class="pillar-stage"><span class="l">Ação</span><p>Cronograma operacional por dia da semana, com registro de execução.</p></div>
+        <div class="pillar-stage"><span class="l">Indicador</span><p>Rotinas diárias concluídas e registradas, sobre o total previsto.</p></div>
+      </div>
+    </div>
+
+    <div class="pillar-row">
+      <div class="pillar-head"><span class="n">5</span><h3>Atendimento</h3></div>
+      <div class="pillar-flow">
+        <div class="pillar-stage"><span class="l">Problema</span><p>A recepção perde cliente por falta de padrão no primeiro contato e no retorno.</p></div>
+        <div class="pillar-stage"><span class="l">Princípio</span><p>Escuta vem antes da execução.</p></div>
+        <div class="pillar-stage"><span class="l">Ação</span><p>POPs de atendimento e sequência de ativação para quem não respondeu.</p></div>
+        <div class="pillar-stage"><span class="l">Indicador</span><p>Taxa de resposta e conversão da sequência de ativação.</p></div>
+      </div>
+    </div>
+
+    <div class="pillar-row">
+      <div class="pillar-head"><span class="n">6</span><h3>Performance</h3></div>
+      <div class="pillar-flow">
+        <div class="pillar-stage"><span class="l">Problema</span><p>A comissão paga o comportamento errado — não recompensa retenção nem revenda.</p></div>
+        <div class="pillar-stage"><span class="l">Princípio</span><p>Comissão que paga o comportamento certo.</p></div>
+        <div class="pillar-stage"><span class="l">Ação</span><p>Revisão do modelo de comissionamento alinhado aos indicadores da operação.</p></div>
+        <div class="pillar-stage"><span class="l">Indicador</span><p>Relação entre comissão paga e retenção/revenda por profissional.</p></div>
+      </div>
+    </div>
+
+    <div class="pillar-row">
+      <div class="pillar-head"><span class="n">7</span><h3>Retenção</h3></div>
+      <div class="pillar-flow">
+        <div class="pillar-stage"><span class="l">Problema</span><p>Cliente falta ou desmarca e não existe processo estruturado de retorno.</p></div>
+        <div class="pillar-stage"><span class="l">Princípio</span><p>O que faz o cliente voltar — não só o que ocupa horário na agenda.</p></div>
+        <div class="pillar-stage"><span class="l">Ação</span><p>Matriz de ativação: aniversariantes, inativas, faltantes, retorno de serviço.</p></div>
+        <div class="pillar-stage"><span class="l">Indicador</span><p>Taxa de retorno de clientes.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 

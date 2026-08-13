@@ -1,17 +1,43 @@
-/* BRGX — sistema visual compartilhado (index, metodo, plataforma, valores) */
+/* ============================================================
+   BRGX DESIGN SYSTEM — tokens + componentes compartilhados
+   Usado por: index, metodo, plataforma, valores, proposta.
+   Referência viva: design-system.html
+   ============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#FAFAF7; --bg-1:#F2F1EC; --bg-2:#E9E7DF;
+  /* cor — superfícies */
+  --bg:#FAFAF7; --bg-1:#F2F1EC; --bg-2:#E9E7DF; --raised:#FFFFFF;
   --ink:#121210;
   --text:#121210; --sub:#57544C; --muted:#8B877C;
   --gold:#8C6B2A; --gold-soft:#A07C35;
   --dark:#131210; --dark-1:#1C1A17; --dark-line:rgba(245,243,238,.10);
   --bs:rgba(18,18,16,.10);
+
+  /* cor — estado (semântico, separado do accent de marca) */
+  --good:#4A6B4F; --good-bg:#EAF1EA;
+  --warn:#B4791E; --warn-bg:#FBF0DF;
+  --critical:#B23B2E; --critical-bg:#FBEAE7;
+  --info:#54677A; --info-bg:#EAEEF1;
+
+  /* tipografia */
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  /* layout */
   --w:1040px;
-  --r-pill:999px; --r-card:20px; --r-sm:10px;
+  --sp-1:.25rem; --sp-2:.5rem; --sp-3:.75rem; --sp-4:1rem; --sp-6:1.5rem; --sp-8:2rem; --sp-12:3rem; --sp-16:4rem;
+  --r-pill:999px; --r-card:20px; --r-sm:10px; --r-xs:6px;
+
+  /* elevação */
+  --shadow-sm:0 1px 2px rgba(18,18,16,.05), 0 1px 1px rgba(18,18,16,.04);
+  --shadow-md:0 8px 24px rgba(18,18,16,.07), 0 2px 6px rgba(18,18,16,.05);
+  --shadow-lg:0 20px 50px rgba(18,18,16,.12);
+  --blur-nav:blur(20px) saturate(160%);
+
+  /* motion */
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --dur-fast:.15s; --dur:.22s;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;text-wrap:pretty}
@@ -69,6 +95,58 @@ body{padding-top:60px}
 .frame-dark{background:var(--dark);border-radius:var(--r-card);padding:14px;position:relative;overflow:hidden}
 .frame-dark::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 20% 0%,rgba(140,107,42,.22),transparent 60%);pointer-events:none}
 .frame-dark img{border-radius:calc(var(--r-card) - 8px);position:relative}
+
+/* CARD — superfície de conteúdo genérica */
+.card{background:var(--raised);border:1px solid var(--bs);border-radius:var(--r-card);padding:var(--sp-6);box-shadow:var(--shadow-sm)}
+.card h3{font-family:var(--sans);font-weight:700;letter-spacing:-.005em;font-size:1.05rem;margin-bottom:.4rem;color:var(--ink)}
+.card p{font-size:.9rem;color:var(--sub);line-height:1.6;margin:0}
+
+/* SPLIT — layout de duas colunas (texto + imagem) */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-12);align-items:center}
+.split img{width:100%;border-radius:var(--r-card);box-shadow:var(--shadow-lg)}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+
+/* BADGE DE ESTADO — semântico, não decorativo */
+.badge-state{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--sans);font-size:.72rem;font-weight:700;padding:.3rem .65rem;border-radius:var(--r-pill)}
+.badge-state.good{background:var(--good-bg);color:var(--good)}
+.badge-state.warn{background:var(--warn-bg);color:var(--warn)}
+.badge-state.critical{background:var(--critical-bg);color:var(--critical)}
+.badge-state.info{background:var(--info-bg);color:var(--info)}
+
+/* PLANOS / PREÇO — cards de investimento reutilizáveis (proposta) */
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-6);align-items:stretch}
+.plan{display:flex;flex-direction:column;background:var(--bg-1);border:1px solid var(--bs);border-radius:var(--r-card);padding:var(--sp-8) var(--sp-6)}
+.plan.featured{background:var(--dark);border-color:transparent;color:#FAFAF7;position:relative;overflow:hidden}
+.plan.featured::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 90% 0%,rgba(140,107,42,.3),transparent 65%);pointer-events:none}
+.plan.featured *{position:relative}
+.plan-tag{font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.plan.featured .plan-tag{color:#DAB878}
+.plan h3{font-family:var(--sans);font-weight:800;letter-spacing:-.01em;font-size:1.3rem;margin-bottom:.3rem;color:var(--ink)}
+.plan.featured h3{color:#FAFAF7}
+.plan .plan-sub{font-size:.85rem;color:var(--sub);margin-bottom:1.3rem}
+.plan.featured .plan-sub{color:rgba(250,250,247,.65)}
+.plan-price{font-family:var(--sans);font-weight:800;letter-spacing:-.02em;font-size:2rem;color:var(--ink);line-height:1.1}
+.plan.featured .plan-price{color:#FAFAF7}
+.plan-price small{display:block;font-size:.78rem;font-weight:600;color:var(--sub);margin-top:.4rem;letter-spacing:0}
+.plan.featured .plan-price small{color:rgba(250,250,247,.6)}
+.plan ul{list-style:none;margin:1.4rem 0;padding:0;display:grid;gap:.1rem}
+.plan li{display:flex;gap:.6rem;font-size:.86rem;line-height:1.55;color:var(--sub);padding:.5rem 0;border-bottom:1px solid var(--bs)}
+.plan.featured li{color:rgba(250,250,247,.8);border-color:rgba(250,250,247,.12)}
+.plan li:last-child{border-bottom:none}
+.plan li::before{content:"·";color:var(--gold);font-weight:800;flex-shrink:0}
+.plan-cta{margin-top:auto;padding-top:.6rem}
+.plan-note{font-size:.76rem;color:var(--muted);text-align:center;margin-top:.7rem;line-height:1.5}
+.plan.featured .plan-note{color:rgba(250,250,247,.5)}
+
+/* NOTICE — callout de contexto/aviso, neutro */
+.notice{border-left:3px solid var(--gold);background:var(--bg-1);padding:var(--sp-4) var(--sp-6);border-radius:0 var(--r-sm) var(--r-sm) 0;font-size:.88rem;color:var(--sub);line-height:1.7}
+.notice b{color:var(--ink)}
+
+/* CHECKLIST */
+.checklist{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.checklist li{padding-left:1.7rem;position:relative;font-size:.88rem;color:var(--sub)}
+.checklist li::before{content:'';position:absolute;left:0;top:.2em;width:.85rem;height:.85rem;border:1.5px solid var(--bs);border-radius:3px}
+.checklist li b{color:var(--ink)}
 
 @media(max-width:620px){
   .nav{padding:12px 20px}
