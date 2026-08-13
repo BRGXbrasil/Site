@@ -51,6 +51,14 @@ button{cursor:pointer}
 .kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;font-family:var(--mono)}
 .brandrow h1{margin:2px 0 0;font-size:22px;letter-spacing:-.01em;font-family:var(--serif);font-weight:400}
 .brandrow .who{color:var(--muted);font-size:12px;text-align:right}
+.profilepick{
+  border:0.5px solid rgba(23,19,14,.18);background:rgba(255,255,255,.6);color:var(--ink);
+  border-radius:999px;padding:6px 26px 6px 12px;font-size:11.5px;font-weight:600;
+  font-family:inherit;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%237e7060'%3E%3Cpath d='M5.5 7.5l4.5 4.5 4.5-4.5' stroke='%237e7060' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center;background-size:12px
+}
 .nav{display:flex;gap:8px;overflow:auto;margin-top:12px;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
 .navbtn{
@@ -207,6 +215,10 @@ mark{background:rgba(140,107,42,.2);color:inherit;border-radius:3px;padding:0 2p
 .dayring-copy{display:grid;gap:4px;min-width:160px}
 .dayring-copy strong{font-size:1.05rem;font-family:var(--serif);font-weight:400}
 .dayring-copy span{color:var(--muted);font-size:.86rem;line-height:1.4}
+.ia-card{border:1px dashed rgba(140,107,42,.4);background:linear-gradient(135deg,rgba(140,107,42,.06),rgba(56,189,248,.04))}
+.ia-tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--accent-ink);margin-bottom:10px}
+.ia-insight{font-family:var(--serif);font-size:1.05rem;line-height:1.5;color:var(--ink);margin-bottom:8px}
+.ia-note{font-size:.78rem;color:var(--muted);line-height:1.5}
 .spotlight{
   padding:22px;border-radius:20px;text-align:left;width:100%;
   background:var(--ink);color:#f4efe7;border:0.5px solid rgba(255,255,255,.1);box-shadow:var(--shadow);
@@ -963,7 +975,7 @@ function load(){
     if(raw) return JSON.parse(raw);
   }catch{}
   return {
-    user:"", view:"aprender",
+    user:"", view:"aprender", profile:"recepcao",
     training:{done:{}},
     execucoes:[],           // registros de tarefas/ativações
     vez:{cats:structuredClone(VEZ_DEFAULT_CATS), state:freshVezState(), catAtual:"cab", log:[]}
@@ -998,6 +1010,27 @@ const VIEWS=[
   ["painel","📋 Painel"],["procedimentos","🔍 Procedimentos"],
   ["vez","📍 Distribuição"],["aprender","🎓 Treinamentos"]
 ];
+
+/* ============ PERFIS ============
+   Reordena e prioriza as telas já existentes conforme a função de quem está usando.
+   Não é autenticação nem permissão real — todos os perfis acessam as mesmas 4 telas,
+   só muda o que aparece primeiro e qual é a tela padrão ao abrir o app. */
+const PROFILES=[
+  ["recepcao","Recepção", ["vez","painel","procedimentos","aprender"]],
+  ["gestor","Gestor", ["painel","procedimentos","vez","aprender"]],
+  ["proprietario","Proprietário", ["painel","aprender","procedimentos","vez"]],
+  ["profissional","Profissional", ["aprender","procedimentos","painel","vez"]]
+];
+function currentProfile(){return PROFILES.find(p=>p[0]===DB.profile)||PROFILES[0]}
+function orderedViews(){
+  const order=currentProfile()[2];
+  return order.map(id=>VIEWS.find(v=>v[0]===id)).filter(Boolean);
+}
+function setProfile(id){
+  DB.profile=id;
+  DB.view=currentProfile()[2][0];
+  save();render();
+}
 let missaoAberta=null;
 let quizEstado=null;
 let quizShuffled=null;
@@ -1050,11 +1083,13 @@ function setView(v){DB.view=v;missaoAberta=null;quizEstado=null;save();render()}
 /* ============ RENDER GERAL ============ */
 function render(){
   normalizeVez();
-  const nav=VIEWS.map(([id,l])=>`<button class="navbtn ${DB.view===id?"on":""}" onclick="setView('${id}')">${l}</button>`).join("");
+  const views=orderedViews();
+  const nav=views.map(([id,l])=>`<button class="navbtn ${DB.view===id?"on":""}" onclick="setView('${id}')">${l}</button>`).join("");
   document.getElementById("mainNav").innerHTML=nav;
-  document.getElementById("footNav").innerHTML=VIEWS.map(([id,l])=>`<button class="footbtn ${DB.view===id?"on":""}" onclick="setView('${id}')">${l}</button>`).join("");
+  document.getElementById("footNav").innerHTML=views.map(([id,l])=>`<button class="footbtn ${DB.view===id?"on":""}" onclick="setView('${id}')">${l}</button>`).join("");
   document.getElementById("viewTitle").textContent=VIEWS.find(v=>v[0]===DB.view)?.[1]||"Aprender";
-  document.getElementById("whoBox").textContent=DB.user||"Equipe de Relacionamento";
+  document.getElementById("whoBox").innerHTML=
+    `<select class="profilepick" onchange="setProfile(this.value)">${PROFILES.map(([id,l])=>`<option value="${id}" ${DB.profile===id?"selected":""}>${esc(l)}</option>`).join("")}</select>`;
   const main=document.getElementById("main");
   main.innerHTML =
     DB.view==="procedimentos" ? renderProcedimentos() :
@@ -1306,6 +1341,18 @@ function lockedCta(nivelId){
     <button class="btn secondary small" onclick="DB.view='aprender';subAprender='trilha';save();render()">Ir treinar</button>
   </div>`;
 }
+/* ============ IA BRGX — protótipo visual ============
+   Conceito de camada de insight contextual do Método Propositivo aplicado ao Painel.
+   Não há lógica ou modelo real por trás — é uma demonstração de como a IA BRGX se
+   apresentaria (insight → ação), sem inventar dado real da operação. */
+function iaConceptCard(){
+  return `
+  <section class="card section ia-card">
+    <div class="ia-tag">✦ BRGX IA · protótipo de conceito</div>
+    <div class="ia-insight">"Retenção caindo e reativação parada há 2 semanas — vale revisar a Matriz de Ativação antes da próxima reunião."</div>
+    <div class="ia-note">Exemplo ilustrativo de como um insight contextual apareceria no Painel. Ainda não está conectado aos dados reais da operação.</div>
+  </section>`;
+}
 function renderPainel(){
   const dow=new Date().getDay();
   const dia=CRONOGRAMA[dow];
@@ -1411,6 +1458,7 @@ function renderPainel(){
 
   return `
   ${ring}
+  ${subTarefas==="hoje"?iaConceptCard():""}
   <div class="subtabs">
     ${[["hoje","Hoje"],["semana","Semana"],["matriz","Matriz de ativações"],["registros","Registros"]].map(([id,l])=>
       `<button class="subtab ${subTarefas===id?"on":""}" onclick="subTarefas='${id}';render()">${l}</button>`).join("")}
