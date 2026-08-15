@@ -148,9 +148,16 @@ body{padding-top:60px}
 .checklist li::before{content:'';position:absolute;left:0;top:.2em;width:.85rem;height:.85rem;border:1.5px solid var(--bs);border-radius:3px}
 .checklist li b{color:var(--ink)}
 
+/* PAGE-NAV — voltar / próximo, entre o conteúdo e o CTA final */
+.page-nav{max-width:var(--w);margin:0 auto;padding:26px 40px;display:flex;justify-content:space-between;align-items:center;border-top:.5px solid var(--bs);gap:16px;flex-wrap:wrap}
+.page-nav a{font-family:var(--sans);font-weight:600;font-size:13px;color:var(--sub);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color var(--dur-fast) var(--ease)}
+.page-nav a:hover{color:var(--gold)}
+.page-nav .pn-next{margin-left:auto;text-align:right}
+
 @media(max-width:620px){
   .nav{padding:12px 20px}
   .sec{padding:60px 22px}
   .cta-inner{padding:64px 22px}
   .footer{padding:24px 20px;flex-direction:column;text-align:center}
+  .page-nav{padding:20px 22px}
 }
