@@ -1543,7 +1543,6 @@ function renderVez(){
         <h2>Interpretação da regra</h2>
         <div class="notice"><strong>Ausente:</strong> sai da distribuição e perde as oportunidades do período. Ao voltar, retorna à ordem estrutural e aguarda o marcador alcançá-la.</div>
         <div class="notice"><strong>Ocupada:</strong> mantém a posição. O sistema pula temporariamente e, quando liberada, volta a ser elegível no ponto em que estiver.</div>
-        <div class="notice"><strong>Preferência:</strong> registrada, mas não consome a vez do rodízio.</div>
       </section>
     </div>`;
   } else if(vezView==="historico"){
@@ -1580,7 +1579,7 @@ function renderVez(){
     const ordem=ordemVisivel();
     body=`<div class="grid2">
       <section>
-        <div class="notice"><strong>Regra ativa:</strong> a ordem estrutural nunca muda — o marcador gira. Ausente perde as oportunidades enquanto está fora. Ocupada preserva posição. Preferência não consome vez.</div>
+        <div class="notice"><strong>Regra ativa:</strong> a ordem estrutural nunca muda, o marcador gira. Ausente perde as oportunidades enquanto está fora. Ocupada preserva posição.</div>
         <section class="card section">
           <h2>${esc(c.name)} · próxima da vez</h2>
           <div class="vezname">${atual?esc(atual):"Sem disponível"}</div>
@@ -1589,8 +1588,7 @@ function renderVez(){
             ${atual?`${esc(atual)} está elegível agora.`:"Marque presença ou libere profissionais para distribuir."}
           </div>
           <div class="list" style="margin-top:16px">
-            <button class="btn" ${!atual?"disabled":""} onclick="abrirAtendimento('normal')">Registrar atendimento da vez →</button>
-            <button class="btn secondary" onclick="abrirAtendimento('pref')">Registrar preferência (não consome vez) →</button>
+            <button class="btn" ${!atual?"disabled":""} onclick="abrirAtendimento()">Registrar atendimento da vez →</button>
           </div>
         </section>
       </section>
@@ -1613,31 +1611,24 @@ function setStatusProf(nome,status){
   vezLog("status",{prof:nome,texto:`${nome}: ${stLabel(prev)} → ${stLabel(status)}`});
   save();render();
 }
-function abrirAtendimento(kind){
+function abrirAtendimento(){
   const atual=daVez();
-  const opts=vezCat().profs.map(n=>`<option value="${esc(n)}">${esc(n)} · ${stLabel(vezSt().statuses[n])}</option>`).join("");
   openModal(
-    kind==="normal"?"Atendimento da vez":"Registrar preferência",
-    kind==="normal"?`Pela fila. Profissional sugerida: ${atual||"—"}.`:"Preferência da cliente não consome a vez do rodízio.",
-    `${kind==="pref"?`<label>Profissional de preferência</label><select id="mProf">${opts}</select><div style="height:10px"></div>`:""}
-     <div class="row">
+    "Atendimento da vez",
+    `Pela fila. Profissional sugerida: ${atual||"—"}.`,
+    `<div class="row">
        <div><label>Cliente</label><input id="mCliente" placeholder="Nome da cliente"></div>
        <div><label>Serviço</label><input id="mServico" placeholder="Corte, escova..."></div>
      </div>`,
     ()=>{
       const cliente=document.getElementById("mCliente").value.trim();
       const servico=document.getElementById("mServico").value.trim();
-      if(kind==="normal"){
-        const c=vezCat(),s=vezSt(),idx=firstAvailable();
-        if(idx>=0){
-          const nome=c.profs[idx];
-          s.counts[nome]=(s.counts[nome]||0)+1;
-          s.pointer=(idx+1)%c.profs.length;
-          vezLog("fila",{prof:nome,cliente,servico,texto:`${nome} atendeu pela fila`});
-        }
-      }else{
-        const prof=document.getElementById("mProf").value;
-        vezLog("preferencia",{prof,cliente,servico,texto:`Preferência por ${prof} — não consome vez`});
+      const c=vezCat(),s=vezSt(),idx=firstAvailable();
+      if(idx>=0){
+        const nome=c.profs[idx];
+        s.counts[nome]=(s.counts[nome]||0)+1;
+        s.pointer=(idx+1)%c.profs.length;
+        vezLog("fila",{prof:nome,cliente,servico,texto:`${nome} atendeu pela fila`});
       }
       save();closeModal();render();
     });
