@@ -39,7 +39,9 @@
 .press-item img{width:100%;border-radius:var(--r-card);display:block;box-shadow:var(--shadow-sm)}
 .press-item p{font-size:13.5px;color:var(--muted);line-height:1.6;margin-top:10px}
 .video-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--r-card);overflow:hidden;background:var(--dark)}
-.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.video-sound-btn{position:absolute;right:12px;bottom:12px;z-index:2;font-family:var(--sans);font-weight:600;font-size:12.5px;color:#FAFAF7;background:rgba(18,18,16,.62);backdrop-filter:blur(6px);border:1px solid rgba(250,250,247,.28);border-radius:var(--r-pill);padding:8px 14px;cursor:pointer;transition:background .15s}
+.video-sound-btn:hover{background:rgba(18,18,16,.8)}
 @media(max-width:760px){.press-block{grid-template-columns:1fr}}
 .platform-teaser{background:var(--dark);padding:40px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;position:relative;border-radius:var(--r-card);overflow:hidden}
 .platform-teaser::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 85% 20%,rgba(140,107,42,.28),transparent 65%)}
@@ -129,8 +131,11 @@
     </div>
     <div class="press-item">
       <h4>Inauguração</h4>
-      <div class="video-frame">
-        <iframe src="https://www.youtube.com/embed/mPN0ukHykc0?start=1540" title="Inauguração do Studio W" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="video-frame" id="inaug-video-wrap">
+        <video id="inaug-video" playsinline muted loop preload="metadata" poster="assets/video-inauguracao-studio-w-poster.jpg">
+          <source src="assets/video-inauguracao-studio-w.mp4" type="video/mp4">
+        </video>
+        <button type="button" class="video-sound-btn" id="inaug-sound-btn" aria-label="Ativar som">Ativar som</button>
       </div>
       <p>Rodrigo Cintra apresenta Diego Borges como gerente operacional responsável pela equipe e pelo treinamento.</p>
     </div>
@@ -201,5 +206,25 @@
 </footer>
 
 <script src="assets/nav.js"></script>
+<script>
+(function(){
+  const vid = document.getElementById('inaug-video');
+  const btn = document.getElementById('inaug-sound-btn');
+  if(!vid || !btn) return;
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ vid.play().catch(()=>{}); }
+      else { vid.pause(); }
+    });
+  }, { threshold: 0.5 });
+  io.observe(vid);
+
+  btn.addEventListener('click', ()=>{
+    vid.muted = !vid.muted;
+    btn.textContent = vid.muted ? 'Ativar som' : 'Sem som';
+  });
+})();
+</script>
 </body>
 </html>
