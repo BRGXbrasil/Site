@@ -166,20 +166,22 @@
 
   <div class="plan-grid">
     <div class="plan featured">
-      <h3>Modelo Propositivo</h3>
+      <h3>ProPositivo</h3>
       <p class="plan-sub">Analisamos a operação, entregamos o plano de ação.</p>
       <div class="plan-price">R$ 3.500<small>Diagnóstico completo em 10 dias</small></div>
+      <div class="plan-cta">
+        <a href="proposta.html" class="btn-solid" style="width:100%;justify-content:center">Ver o que está incluído &rarr;</a>
+      </div>
     </div>
 
     <div class="plan">
       <h3>Consultoria Executiva da Operação</h3>
       <p class="plan-sub">Acompanhamento contínuo da operação.</p>
       <div class="plan-price">Sob consulta</div>
+      <div class="plan-cta">
+        <a href="proposta.html" class="btn-ghost" style="width:100%;justify-content:center;margin-left:0">Ver como funciona &rarr;</a>
+      </div>
     </div>
-  </div>
-
-  <div style="margin-top:28px">
-    <a href="proposta.html" class="btn-solid">Ver o que está incluído em cada modelo &rarr;</a>
   </div>
 </section>
 
@@ -212,12 +214,17 @@
   const btn = document.getElementById('inaug-sound-btn');
   if(!vid || !btn) return;
 
+  let everPlayed = false;
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){ vid.play().catch(()=>{}); }
+      if(e.isIntersecting){
+        if(!everPlayed){ vid.muted = true; everPlayed = true; }
+        const p = vid.play();
+        if(p && p.catch) p.catch(()=>{});
+      }
       else { vid.pause(); }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.25, rootMargin: '150px 0px' });
   io.observe(vid);
 
   btn.addEventListener('click', ()=>{
